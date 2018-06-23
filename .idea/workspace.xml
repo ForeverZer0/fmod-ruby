@@ -1,0 +1,792 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="b33e2117-1861-4650-8c99-24e1de9bc271" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/fmod.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.rspec" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.travis.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CODE_OF_CONDUCT.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Gemfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/LICENSE.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Rakefile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/console" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/setup" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/fmod.gemspec" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/fmod.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/fmod/core/channel.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/fmod/core/channel_control.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/fmod/core/channel_group.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/fmod/core/dsp.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/fmod/core/dsp_chain.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/fmod/core/dsp_connection.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/fmod/core/error.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/fmod/core/extensions.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/fmod/core/geometry.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/fmod/core/handle.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/fmod/core/polygon.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/fmod/core/reverb3D.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/fmod/core/sound.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/fmod/core/sound_group.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/fmod/core/system.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/fmod/core/tag_collection.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/fmod/effects/channel_mix.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/fmod/effects/chorus.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/fmod/effects/compressor.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/fmod/effects/convolution_reverb.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/fmod/effects/delay.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/fmod/effects/distortion.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/fmod/effects/dsps.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/fmod/effects/echo.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/fmod/effects/envelope_follower.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/fmod/effects/fader.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/fmod/effects/fft.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/fmod/effects/flange.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/fmod/effects/high_pass.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/fmod/effects/high_pass_simple.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/fmod/effects/it_echo.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/fmod/effects/it_lowpass.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/fmod/effects/ladspa_plugin.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/fmod/effects/limiter.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/fmod/effects/loudness_meter.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/fmod/effects/low_pass.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/fmod/effects/low_pass_simple.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/fmod/effects/mixer.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/fmod/effects/multiband_eq.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/fmod/effects/normalize.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/fmod/effects/object_pan.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/fmod/effects/oscillator.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/fmod/effects/pan.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/fmod/effects/param_eq.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/fmod/effects/pitch_shift.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/fmod/effects/return.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/fmod/effects/send.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/fmod/effects/sfx_reverb.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/fmod/effects/three_eq.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/fmod/effects/transceiver.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/fmod/effects/tremolo.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/fmod/effects/vst_plugin.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/fmod/effects/winamp_plugin.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/fmod/enums/channel_mask.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/fmod/enums/dsp_index.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/fmod/enums/dsp_type.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/fmod/enums/filter_type.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/fmod/enums/init_flags.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/fmod/enums/mode.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/fmod/enums/parameter_type.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/fmod/enums/result.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/fmod/enums/sound_group_behavior.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/fmod/enums/speaker.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/fmod/enums/speaker_mode.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/fmod/enums/tag_data_type.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/fmod/enums/time_unit.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/fmod/enums/window_type.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/fmod/structures.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/fmod/version.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spec/fmod_spec.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spec/spec_helper.rb" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/fmod@bool_description.rcov" NAME="bool_description Coverage Results" MODIFIED="1529535971158" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/lib/fmod/structs" MODULE_NAME="fmod" />
+    <SUITE FILE_PATH="coverage/fmod@structures.rcov" NAME="structures Coverage Results" MODIFIED="1529543048931" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/lib/fmod" MODULE_NAME="fmod" />
+    <SUITE FILE_PATH="coverage/fmod@IRB_console__fmod.rcov" NAME="IRB console: fmod Coverage Results" MODIFIED="1529787639107" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/lib" MODULE_NAME="fmod" />
+    <SUITE FILE_PATH="coverage/fmod@fmod.rcov" NAME="fmod Coverage Results" MODIFIED="1529399727108" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/lib" MODULE_NAME="fmod" />
+    <SUITE FILE_PATH="coverage/fmod@vector.rcov" NAME="vector Coverage Results" MODIFIED="1529540050389" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/lib/fmod/structs" MODULE_NAME="fmod" />
+    <SUITE FILE_PATH="coverage/fmod@test.rcov" NAME="test Coverage Results" MODIFIED="1529546352713" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/lib" MODULE_NAME="fmod" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="dsp.rb" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/fmod/core/dsp.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="120">
+              <caret line="8" column="3" lean-forward="true" selection-start-line="8" selection-start-column="3" selection-end-line="8" selection-end-column="3" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="fmod.rb" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/fmod.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="293">
+              <caret line="258" column="4" lean-forward="true" selection-start-line="258" selection-start-column="4" selection-end-line="258" selection-end-column="26" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="channel_control.rb" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/fmod/core/channel_control.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="101">
+              <caret line="84" selection-start-line="84" selection-end-line="99" selection-end-column="5" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="channel.rb" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/fmod/core/channel.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="150">
+              <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="sound.rb" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/lib/fmod/core/sound.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="107">
+              <caret line="508" lean-forward="true" selection-start-line="508" selection-end-line="508" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="system.rb" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/fmod/core/system.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="30">
+              <caret line="116" selection-start-line="116" selection-end-line="156" selection-end-column="50" />
+              <folding>
+                <element signature="e#937#1187#0" />
+                <element signature="e#1193#1444#0" />
+                <element signature="e#1450#1944#0" />
+                <element signature="e#1950#2133#0" />
+                <element signature="e#2139#2334#0" />
+                <element signature="e#2340#2471#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Ruby Class Template" />
+        <option value="Ruby Module Template" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>then</find>
+      <find>FMOD.ptr</find>
+      <find>[Float]</find>
+      <find>]</find>
+      <find>when .* then</find>
+      <find>= [\d]*</find>
+      <find>ptr</find>
+      <find>&quot;\0&quot; * SIZEOF_INTPTR_T</find>
+      <find>{MultibandEq}</find>
+      <find>@see {BANDS}</find>
+      <find>, min[\w]*</find>
+      <find>method</find>
+      <find>fader</find>
+      <find>def in</find>
+      <find>pointer</find>
+      <find>malloc</find>
+      <find>puts</find>
+      <find>Pointer</find>
+      <find>sus</find>
+      <find>FIVE_POINT_ONE</find>
+      <find>? 1 : 0</find>
+      <find>@since</find>
+      <find>vect</find>
+      <find>@note</find>
+      <find>:DSP_GetType</find>
+      <find>@!</find>
+      <find>[]</find>
+      <find>Get3DCustomRolloff</find>
+      <find>cone</find>
+      <find>loop</find>
+    </findStrings>
+    <replaceStrings>
+      <replace>int_ptr</replace>
+      <replace>)</replace>
+      <replace>=&gt;</replace>
+      <replace>FMOD.ptr</replace>
+      <replace>@see BANDS</replace>
+      <replace>param</replace>
+      <replace>.to_i</replace>
+    </replaceStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/lib/fmod/effects/three_eq.rb" />
+        <option value="$PROJECT_DIR$/lib/fmod/effects/pan.rb" />
+        <option value="$PROJECT_DIR$/lib/fmod/effects/dsps.rb" />
+        <option value="$PROJECT_DIR$/lib/fmod/effects/object_pan.rb" />
+        <option value="$PROJECT_DIR$/lib/fmod/effects/compressor.rb" />
+        <option value="$PROJECT_DIR$/lib/fmod/effects/loudness_meter.rb" />
+        <option value="$PROJECT_DIR$/lib/fmod/structs/c_struct.rb" />
+        <option value="$PROJECT_DIR$/lib/fmod/structs/data_description.rb" />
+        <option value="$PROJECT_DIR$/lib/fmod/structs/structure.rb" />
+        <option value="$PROJECT_DIR$/lib/fmod/structs/vector.rb" />
+        <option value="$PROJECT_DIR$/lib/fmod/structs/tag.rb" />
+        <option value="$PROJECT_DIR$/lib/fmod/structs/structs.rb" />
+        <option value="$PROJECT_DIR$/lib/fmod/structs/spectrum_data.rb" />
+        <option value="$PROJECT_DIR$/lib/fmod/structs/parameter_info.rb" />
+        <option value="$PROJECT_DIR$/lib/fmod/structs/float_description.rb" />
+        <option value="$PROJECT_DIR$/lib/fmod/structs/integer_description.rb" />
+        <option value="$PROJECT_DIR$/lib/fmod/structs/bool_description.rb" />
+        <option value="$PROJECT_DIR$/lib/fmod/structs/reverb.rb" />
+        <option value="$PROJECT_DIR$/lib/fmod/enums/dsp_index.rb" />
+        <option value="$PROJECT_DIR$/lib/fmod/enums/dsp_type.rb" />
+        <option value="$PROJECT_DIR$/lib/fmod/enums/filter_type.rb" />
+        <option value="$PROJECT_DIR$/lib/fmod/enums/init_flags.rb" />
+        <option value="$PROJECT_DIR$/lib/fmod/enums/mode.rb" />
+        <option value="$PROJECT_DIR$/lib/fmod/enums/parameter_type.rb" />
+        <option value="$PROJECT_DIR$/lib/fmod/enums/result.rb" />
+        <option value="$PROJECT_DIR$/lib/fmod/enums/sound_group_behavior.rb" />
+        <option value="$PROJECT_DIR$/lib/fmod/enums/speaker.rb" />
+        <option value="$PROJECT_DIR$/lib/fmod/enums/speaker_mode.rb" />
+        <option value="$PROJECT_DIR$/lib/fmod/enums/tag_data_type.rb" />
+        <option value="$PROJECT_DIR$/lib/fmod/enums/time_unit.rb" />
+        <option value="$PROJECT_DIR$/lib/fmod/enums/window_type.rb" />
+        <option value="$PROJECT_DIR$/lib/fmod/core/handle.rb" />
+        <option value="$PROJECT_DIR$/lib/fmod/effects/transceiver.rb" />
+        <option value="$PROJECT_DIR$/lib/fmod/core/error.rb" />
+        <option value="$PROJECT_DIR$/lib/test.rb" />
+        <option value="$PROJECT_DIR$/lib/fmod/enums/channel_mask.rb" />
+        <option value="$PROJECT_DIR$/lib/fmod/core/extensions.rb" />
+        <option value="$PROJECT_DIR$/lib/fmod/core/reverb3D.rb" />
+        <option value="$PROJECT_DIR$/lib/fmod/core/dsp_chain.rb" />
+        <option value="$PROJECT_DIR$/lib/fmod/core/geometry.rb" />
+        <option value="$PROJECT_DIR$/lib/fmod/core/polygon.rb" />
+        <option value="$PROJECT_DIR$/lib/fmod/core/dsp.rb" />
+        <option value="$PROJECT_DIR$/lib/fmod/core/tag_collection.rb" />
+        <option value="$PROJECT_DIR$/lib/fmod/core/channel.rb" />
+        <option value="$PROJECT_DIR$/lib/fmod/core/channel_control.rb" />
+        <option value="$PROJECT_DIR$/lib/fmod/structures.rb" />
+        <option value="$PROJECT_DIR$/lib/fmod/enums/sound_type.rb" />
+        <option value="$PROJECT_DIR$/lib/fmod/enums/sound_format.rb" />
+        <option value="$PROJECT_DIR$/lib/fmod.rb" />
+        <option value="$PROJECT_DIR$/lib/fmod/core/system.rb" />
+        <option value="$PROJECT_DIR$/lib/fmod/core/sound.rb" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="256" />
+    <option name="y" value="-19" />
+    <option name="width" value="980" />
+    <option name="height" value="1040" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="fmod" type="b2602c69:ProjectViewProjectNode" />
+              <item name="fmod" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file://C:/Users/efree/OneDrive/Documents/RubymineProjects/fmod/lib/fmod/effects/it_lowpass.rb" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="restartRequiresConfirmation" value="false" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\efree\OneDrive\Documents\RubymineProjects\fmod\lib" />
+      <recent name="C:\Users\efree\OneDrive\Documents\RubymineProjects\fmod\lib\fmod\effects" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\efree\OneDrive\Documents\RubymineProjects\fmod\lib\fmod" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="IRB console.IRB console: fmod">
+    <configuration name="IRB console: fmod" type="IrbRunConfigurationType" factoryName="IRB console" singleton="true" temporary="true">
+      <module name="fmod" />
+      <IRB_RUN_CONFIG NAME="RUBY_ARGS" VALUE="-e $stdout.sync=true;$stderr.sync=true;load($0=ARGV.shift)" />
+      <IRB_RUN_CONFIG NAME="WORK DIR" VALUE="$MODULE_DIR$/lib" />
+      <IRB_RUN_CONFIG NAME="SHOULD_USE_SDK" VALUE="false" />
+      <IRB_RUN_CONFIG NAME="ALTERN_SDK_NAME" VALUE="" />
+      <IRB_RUN_CONFIG NAME="myPassParentEnvs" VALUE="true" />
+      <EXTENSION ID="BundlerRunConfigurationExtension" bundleExecEnabled="false" />
+      <EXTENSION ID="JRubyRunConfigurationExtension" NailgunExecEnabled="false" />
+      <EXTENSION ID="RubyCoverageRunConfigurationExtension" track_test_folders="true" runner="rcov" />
+      <IRB_RUN_CONFIG NAME="SCRIPT_PATH" VALUE="$APPLICATION_HOME_DIR$/rb/testing/runner/irb.rb" />
+      <IRB_RUN_CONFIG NAME="SCRIPT_ARGS" VALUE="-r ./test.rb --prompt simple" />
+      <IRB_RUN_CONFIG NAME="IS_RAILS_CONSOLE" VALUE="false" />
+    </configuration>
+    <configuration name="bool_description" type="RubyRunConfigurationType" factoryName="Ruby" temporary="true">
+      <module name="fmod" />
+      <RUBY_RUN_CONFIG NAME="RUBY_ARGS" VALUE="-e $stdout.sync=true;$stderr.sync=true;load($0=ARGV.shift)" />
+      <RUBY_RUN_CONFIG NAME="WORK DIR" VALUE="$MODULE_DIR$/lib/fmod/structs" />
+      <RUBY_RUN_CONFIG NAME="SHOULD_USE_SDK" VALUE="false" />
+      <RUBY_RUN_CONFIG NAME="ALTERN_SDK_NAME" VALUE="" />
+      <RUBY_RUN_CONFIG NAME="myPassParentEnvs" VALUE="true" />
+      <EXTENSION ID="BundlerRunConfigurationExtension" bundleExecEnabled="false" />
+      <EXTENSION ID="JRubyRunConfigurationExtension" NailgunExecEnabled="false" />
+      <EXTENSION ID="RubyCoverageRunConfigurationExtension" track_test_folders="true" runner="rcov" />
+      <RUBY_RUN_CONFIG NAME="SCRIPT_PATH" VALUE="$MODULE_DIR$/lib/fmod/structs/bool_description.rb" />
+      <RUBY_RUN_CONFIG NAME="SCRIPT_ARGS" VALUE="" />
+    </configuration>
+    <configuration name="structures" type="RubyRunConfigurationType" factoryName="Ruby" temporary="true">
+      <module name="fmod" />
+      <RUBY_RUN_CONFIG NAME="RUBY_ARGS" VALUE="-e $stdout.sync=true;$stderr.sync=true;load($0=ARGV.shift)" />
+      <RUBY_RUN_CONFIG NAME="WORK DIR" VALUE="$MODULE_DIR$/lib/fmod" />
+      <RUBY_RUN_CONFIG NAME="SHOULD_USE_SDK" VALUE="false" />
+      <RUBY_RUN_CONFIG NAME="ALTERN_SDK_NAME" VALUE="" />
+      <RUBY_RUN_CONFIG NAME="myPassParentEnvs" VALUE="true" />
+      <EXTENSION ID="BundlerRunConfigurationExtension" bundleExecEnabled="false" />
+      <EXTENSION ID="JRubyRunConfigurationExtension" NailgunExecEnabled="false" />
+      <EXTENSION ID="RubyCoverageRunConfigurationExtension" track_test_folders="true" runner="rcov" />
+      <RUBY_RUN_CONFIG NAME="SCRIPT_PATH" VALUE="$MODULE_DIR$/lib/fmod/structures.rb" />
+      <RUBY_RUN_CONFIG NAME="SCRIPT_ARGS" VALUE="" />
+    </configuration>
+    <configuration name="test" type="RubyRunConfigurationType" factoryName="Ruby" temporary="true">
+      <module name="fmod" />
+      <RUBY_RUN_CONFIG NAME="RUBY_ARGS" VALUE="-e $stdout.sync=true;$stderr.sync=true;load($0=ARGV.shift)" />
+      <RUBY_RUN_CONFIG NAME="WORK DIR" VALUE="$MODULE_DIR$/lib" />
+      <RUBY_RUN_CONFIG NAME="SHOULD_USE_SDK" VALUE="false" />
+      <RUBY_RUN_CONFIG NAME="ALTERN_SDK_NAME" VALUE="" />
+      <RUBY_RUN_CONFIG NAME="myPassParentEnvs" VALUE="true" />
+      <EXTENSION ID="BundlerRunConfigurationExtension" bundleExecEnabled="false" />
+      <EXTENSION ID="JRubyRunConfigurationExtension" NailgunExecEnabled="false" />
+      <EXTENSION ID="RubyCoverageRunConfigurationExtension" track_test_folders="true" runner="rcov" />
+      <RUBY_RUN_CONFIG NAME="SCRIPT_PATH" VALUE="$MODULE_DIR$/lib/test.rb" />
+      <RUBY_RUN_CONFIG NAME="SCRIPT_ARGS" VALUE="" />
+    </configuration>
+    <configuration name="vector" type="RubyRunConfigurationType" factoryName="Ruby" temporary="true">
+      <module name="fmod" />
+      <RUBY_RUN_CONFIG NAME="RUBY_ARGS" VALUE="-e $stdout.sync=true;$stderr.sync=true;load($0=ARGV.shift)" />
+      <RUBY_RUN_CONFIG NAME="WORK DIR" VALUE="$MODULE_DIR$/lib/fmod/structs" />
+      <RUBY_RUN_CONFIG NAME="SHOULD_USE_SDK" VALUE="false" />
+      <RUBY_RUN_CONFIG NAME="ALTERN_SDK_NAME" VALUE="" />
+      <RUBY_RUN_CONFIG NAME="myPassParentEnvs" VALUE="true" />
+      <EXTENSION ID="BundlerRunConfigurationExtension" bundleExecEnabled="false" />
+      <EXTENSION ID="JRubyRunConfigurationExtension" NailgunExecEnabled="false" />
+      <EXTENSION ID="RubyCoverageRunConfigurationExtension" track_test_folders="true" runner="rcov" />
+      <RUBY_RUN_CONFIG NAME="SCRIPT_PATH" VALUE="$MODULE_DIR$/lib/fmod/structs/vector.rb" />
+      <RUBY_RUN_CONFIG NAME="SCRIPT_ARGS" VALUE="" />
+    </configuration>
+    <list>
+      <item itemvalue="IRB console.IRB console: fmod" />
+      <item itemvalue="Ruby.bool_description" />
+      <item itemvalue="Ruby.vector" />
+      <item itemvalue="Ruby.structures" />
+      <item itemvalue="Ruby.test" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="IRB console.IRB console: fmod" />
+        <item itemvalue="Ruby.test" />
+        <item itemvalue="Ruby.structures" />
+        <item itemvalue="Ruby.vector" />
+        <item itemvalue="Ruby.bool_description" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpringUtil" SPRING_PRE_LOADER_OPTION="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="b33e2117-1861-4650-8c99-24e1de9bc271" name="Default" comment="" />
+      <created>1529271742362</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1529271742362</updated>
+      <workItem from="1529271743582" duration="34773000" />
+      <workItem from="1529344079375" duration="42905000" />
+      <workItem from="1529430128325" duration="15169000" />
+      <workItem from="1529452483828" duration="17542000" />
+      <workItem from="1529518747505" duration="25611000" />
+      <workItem from="1529548274944" duration="10470000" />
+      <workItem from="1529568740517" duration="1719000" />
+      <workItem from="1529605227496" duration="17449000" />
+      <workItem from="1529631824540" duration="4834000" />
+      <workItem from="1529639157238" duration="3420000" />
+      <workItem from="1529687305793" duration="54860000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="228752000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <layout>
+      <window_info anchor="bottom" id="TODO" order="11" />
+      <window_info anchor="bottom" id="Event Log" order="2" sideWeight="0.5019531" side_tool="true" visible="true" weight="0.27310345" />
+      <window_info anchor="right" x="0" y="0" width="337" height="638" id="Documentation" order="4" sideWeight="0.5095057" side_tool="true" visible="true" weight="0.111979164" />
+      <window_info anchor="bottom" id="Database Changes" order="1" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="4" />
+      <window_info anchor="bottom" id="Run" order="7" sideWeight="0.49804688" visible="true" weight="0.27310345" />
+      <window_info anchor="bottom" id="Terminal" order="3" weight="0.32413793" />
+      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.16796875" />
+      <window_info anchor="bottom" id="Docker" order="0" show_stripe_button="false" />
+      <window_info anchor="right" id="Database" order="0" />
+      <window_info anchor="bottom" id="Find" order="6" weight="0.32965517" />
+      <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="0" side_tool="true" />
+      <window_info anchor="bottom" id="Debug" order="8" weight="0.4" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="3" sideWeight="0.4904943" visible="true" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="10" weight="0.4" />
+      <window_info anchor="right" id="Commander" order="1" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Messages" order="12" weight="0.32965517" />
+      <window_info anchor="bottom" id="Message" order="5" />
+      <window_info anchor="bottom" id="Cvs" order="9" weight="0.25" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <option name="time" value="11" />
+    </breakpoint-manager>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/lib/fmod/effects/pan.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="314">
+          <caret line="71" selection-start-line="71" selection-end-line="76" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/fmod/effects/object_pan.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="73" lean-forward="true" selection-start-line="4" selection-start-column="73" selection-end-line="4" selection-end-column="73" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/fmod/effects/dsps.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="3" lean-forward="true" selection-start-line="9" selection-start-column="3" selection-end-line="9" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/fmod/effects/compressor.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="41" column="27" selection-start-line="41" selection-start-column="27" selection-end-line="41" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/fmod/effects/loudness_meter.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" column="18" lean-forward="true" selection-start-line="12" selection-start-column="18" selection-end-line="12" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/fmod/structs/c_struct.rb" />
+    <entry file="file://$PROJECT_DIR$/lib/fmod/structs/data_description.rb" />
+    <entry file="file://$PROJECT_DIR$/lib/fmod/structs/structure.rb" />
+    <entry file="file://$PROJECT_DIR$/lib/fmod/structs/structs.rb" />
+    <entry file="file://$PROJECT_DIR$/lib/fmod/structs/spectrum_data.rb" />
+    <entry file="file://$PROJECT_DIR$/lib/fmod/structs/tag.rb" />
+    <entry file="file://$PROJECT_DIR$/lib/fmod/structs/parameter_info.rb" />
+    <entry file="file://$PROJECT_DIR$/lib/fmod/structs/float_description.rb" />
+    <entry file="file://$PROJECT_DIR$/lib/fmod/structs/integer_description.rb" />
+    <entry file="file://$PROJECT_DIR$/lib/fmod/structs/bool_description.rb" />
+    <entry file="file://$PROJECT_DIR$/lib/fmod/structs/reverb.rb" />
+    <entry file="file://$PROJECT_DIR$/lib/fmod/enums/dsp_index.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="3" lean-forward="true" selection-start-line="8" selection-start-column="3" selection-end-line="8" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/fmod/enums/dsp_type.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="17" lean-forward="true" selection-start-line="3" selection-start-column="17" selection-end-line="3" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/fmod/enums/filter_type.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="18" column="3" selection-start-line="18" selection-start-column="3" selection-end-line="18" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/fmod/enums/init_flags.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="20" lean-forward="true" selection-start-line="2" selection-start-column="20" selection-end-line="2" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/fmod/enums/parameter_type.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="9" column="3" selection-start-line="9" selection-start-column="3" selection-end-line="9" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/fmod/enums/result.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="87" column="3" lean-forward="true" selection-start-line="87" selection-start-column="3" selection-end-line="87" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/fmod/enums/sound_group_behavior.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="8" column="3" selection-start-line="8" selection-start-column="3" selection-end-line="8" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/fmod/enums/speaker.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="3" selection-start-line="6" selection-start-column="3" selection-end-line="6" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/fmod/enums/speaker_mode.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" column="3" lean-forward="true" selection-start-line="15" selection-start-column="3" selection-end-line="15" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/fmod/enums/tag_data_type.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="13" column="3" selection-start-line="13" selection-start-column="3" selection-end-line="13" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/fmod/enums/time_unit.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="39" column="3" selection-start-line="39" selection-start-column="3" selection-end-line="39" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/fmod/enums/window_type.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="3" lean-forward="true" selection-start-line="11" selection-start-column="3" selection-end-line="11" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/fmod/effects/transceiver.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="11" lean-forward="true" selection-start-line="3" selection-start-column="11" selection-end-line="3" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/Ruby24/lib/ruby/2.4.0/matrix.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="166">
+          <caret line="1730" column="6" selection-start-line="1730" selection-start-column="6" selection-end-line="1730" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/fmod/enums/channel_mask.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="337">
+          <caret line="23" column="3" lean-forward="true" selection-start-line="23" selection-start-column="3" selection-end-line="23" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/fmod/core/error.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="6" column="32" selection-start-line="6" selection-start-column="32" selection-end-line="6" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/fmod/enums/mode.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="480">
+          <caret line="32" column="6" selection-start-line="32" selection-start-column="6" selection-end-line="32" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/test.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="26" selection-start-line="26" selection-end-line="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/fmod/core/extensions.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/fmod/core/handle.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="647">
+          <caret line="52" column="7" selection-start-line="52" selection-start-column="7" selection-end-line="52" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/fmod/core/reverb3D.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/test.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/fmod/core/polygon.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/fmod/core/dsp.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="3" lean-forward="true" selection-start-line="8" selection-start-column="3" selection-end-line="8" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/fmod/core/dsp_chain.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="177">
+          <caret line="43" column="12" lean-forward="true" selection-start-line="43" selection-start-column="12" selection-end-line="43" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/fmod/core/geometry.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="26" column="26" lean-forward="true" selection-start-line="26" selection-start-column="26" selection-end-line="26" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/fmod/structures.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="217">
+          <caret line="23" column="77" lean-forward="true" selection-start-line="23" selection-start-column="77" selection-end-line="23" selection-end-column="77" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/fmod/enums/sound_type.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="20" lean-forward="true" selection-start-line="4" selection-start-column="20" selection-end-line="4" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/fmod/enums/sound_format.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="29" column="3" lean-forward="true" selection-start-line="29" selection-start-column="3" selection-end-line="29" selection-end-column="3" />
+          <folding>
+            <element signature="e#149#620#2" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/fmod/core/tag_collection.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="12" column="9" lean-forward="true" selection-start-line="12" selection-start-column="9" selection-end-line="12" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/fmod/core/channel_control.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="101">
+          <caret line="84" selection-start-line="84" selection-end-line="99" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/fmod/core/channel.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/fmod.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="293">
+          <caret line="258" column="4" lean-forward="true" selection-start-line="258" selection-start-column="4" selection-end-line="258" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/fmod/core/system.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="116" selection-start-line="116" selection-end-line="156" selection-end-column="50" />
+          <folding>
+            <element signature="e#937#1187#0" />
+            <element signature="e#1193#1444#0" />
+            <element signature="e#1450#1944#0" />
+            <element signature="e#1950#2133#0" />
+            <element signature="e#2139#2334#0" />
+            <element signature="e#2340#2471#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/fmod/core/sound.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="107">
+          <caret line="508" lean-forward="true" selection-start-line="508" selection-end-line="508" />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>
