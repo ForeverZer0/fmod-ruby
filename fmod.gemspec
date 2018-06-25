@@ -6,12 +6,12 @@ require "fmod/version"
 Gem::Specification.new do |spec|
   spec.name          = "fmod"
   spec.version       = FMOD::VERSION
-  spec.authors       = ["ForeverZer0"]
+  spec.authors       = ["Eric Freed"]
   spec.email         = ["efreed09@gmail.com"]
 
   spec.summary       = %q{TODO: Write a short summary, because RubyGems requires one.}
   spec.description   = %q{TODO: Write a longer description or delete this line.}
-  spec.homepage      = "TODO: Put your gem's website or public repo URL here."
+  spec.homepage      = "https://github.com/ForeverZer0/fmod-ruby"
   spec.license       = "MIT"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'

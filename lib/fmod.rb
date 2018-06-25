@@ -2,6 +2,7 @@
 require 'fiddle'
 require 'rbconfig'
 
+
 module FMOD
 
   include Fiddle
@@ -32,6 +33,22 @@ module FMOD
   # DSP in the mix graph. This is unrelated to the number of possible {Reverb3D}
   # objects, which is unlimited.
   MAX_REVERB = 4
+
+  require_relative 'fmod/version.rb'
+  require_relative 'fmod/core'
+  require_relative 'fmod/error.rb'
+  require_relative 'fmod/handle.rb'
+  require_relative 'fmod/channel_control.rb'
+  require_relative 'fmod/channel.rb'
+  require_relative 'fmod/channel_group.rb'
+  require_relative 'fmod/dsp.rb'
+  require_relative 'fmod/effects.rb'
+  require_relative 'fmod/dsp_connection.rb'
+  require_relative 'fmod/geometry.rb'
+  require_relative 'fmod/reverb3D.rb'
+  require_relative 'fmod/sound.rb'
+  require_relative 'fmod/sound_group.rb'
+  require_relative 'fmod/system.rb'
 
   @function_signatures = {
     ############################################################################
@@ -176,14 +193,14 @@ module FMOD
     ############################################################################
     # DspConnection
     ############################################################################
-    # DSPConnection_GetInput: [TYPE_VOIDP],
-    # DSPConnection_GetMix: [TYPE_VOIDP],
-    # DSPConnection_GetMixMatrix: [TYPE_VOIDP],
-    # DSPConnection_GetOutput: [TYPE_VOIDP],
-    # DSPConnection_GetType: [TYPE_VOIDP],
+    DSPConnection_GetInput: [TYPE_VOIDP, TYPE_VOIDP],
+    DSPConnection_GetMix: [TYPE_VOIDP, TYPE_VOIDP],
+    DSPConnection_GetMixMatrix: [TYPE_VOIDP, TYPE_VOIDP, TYPE_VOIDP, TYPE_VOIDP, TYPE_INT],
+    DSPConnection_GetOutput: [TYPE_VOIDP, TYPE_VOIDP],
+    DSPConnection_GetType: [TYPE_VOIDP, TYPE_VOIDP],
     DSPConnection_GetUserData: [TYPE_VOIDP, TYPE_VOIDP],
-    # DSPConnection_SetMix: [TYPE_VOIDP],
-    # DSPConnection_SetMixMatrix: [TYPE_VOIDP],
+    DSPConnection_SetMix: [TYPE_VOIDP, TYPE_FLOAT],
+    DSPConnection_SetMixMatrix: [TYPE_VOIDP, TYPE_VOIDP, TYPE_INT, TYPE_INT, TYPE_INT],
     DSPConnection_SetUserData: [TYPE_VOIDP, TYPE_VOIDP],
     ############################################################################
     # File
@@ -303,7 +320,7 @@ module FMOD
     # System_AttachFileSystem: [TYPE_VOIDP],
     System_Close: [TYPE_VOIDP],
     System_Create: [TYPE_VOIDP],
-    # System_CreateChannelGroup: [TYPE_VOIDP],
+    System_CreateChannelGroup: [TYPE_VOIDP, TYPE_VOIDP, TYPE_VOIDP],
     # System_CreateDSP: [TYPE_VOIDP],
     # System_CreateDSPByPlugin: [TYPE_VOIDP],
     System_CreateDSPByType: [TYPE_VOIDP, TYPE_INT, TYPE_VOIDP],
@@ -314,36 +331,36 @@ module FMOD
     System_CreateStream: [TYPE_VOIDP, TYPE_VOIDP, TYPE_INT, TYPE_VOIDP, TYPE_VOIDP],
     # System_DetachChannelGroupFromPort: [TYPE_VOIDP],
     # System_Get3DListenerAttributes: [TYPE_VOIDP],
-    # System_Get3DNumListeners: [TYPE_VOIDP],
+    System_Get3DNumListeners: [TYPE_VOIDP, TYPE_VOIDP],
     # System_Get3DSettings: [TYPE_VOIDP],
     # System_GetAdvancedSettings: [TYPE_VOIDP],
     # System_GetChannel: [TYPE_VOIDP],
-    # System_GetChannelsPlaying: [TYPE_VOIDP],
+    System_GetChannelsPlaying: Array.new(3, TYPE_VOIDP),
     System_GetCPUUsage: Array.new(6, TYPE_VOIDP),
     # System_GetDefaultMixMatrix: [TYPE_VOIDP],
-    # System_GetDriver: [TYPE_VOIDP],
-    # System_GetDriverInfo: [TYPE_VOIDP],
+    System_GetDriver: [TYPE_VOIDP, TYPE_VOIDP],
+    System_GetDriverInfo: [TYPE_VOIDP, TYPE_INT, TYPE_VOIDP, TYPE_INT, TYPE_VOIDP] + Array.new(3, TYPE_VOIDP),
     # System_GetDSPBufferSize: [TYPE_VOIDP],
     # System_GetDSPInfoByPlugin: [TYPE_VOIDP],
     System_GetFileUsage: Array.new(4, TYPE_VOIDP),
     # System_GetGeometryOcclusion: [TYPE_VOIDP],
-    # System_GetGeometrySettings: [TYPE_VOIDP],
-    # System_GetMasterChannelGroup: [TYPE_VOIDP],
-    # System_GetMasterSoundGroup: [TYPE_VOIDP],
+    System_GetGeometrySettings: [TYPE_VOIDP, TYPE_VOIDP],
+    System_GetMasterChannelGroup: [TYPE_VOIDP, TYPE_VOIDP],
+    System_GetMasterSoundGroup: [TYPE_VOIDP, TYPE_VOIDP],
     # System_GetNestedPlugin: [TYPE_VOIDP],
     # System_GetNetworkProxy: [TYPE_VOIDP],
     # System_GetNetworkTimeout: [TYPE_VOIDP],
-    # System_GetNumDrivers: [TYPE_VOIDP],
+    System_GetNumDrivers: [TYPE_VOIDP, TYPE_VOIDP],
     # System_GetNumNestedPlugins: [TYPE_VOIDP],
     # System_GetNumPlugins: [TYPE_VOIDP],
-    # System_GetOutput: [TYPE_VOIDP],
+    System_GetOutput: [TYPE_VOIDP, TYPE_VOIDP],
     # System_GetOutputByPlugin: [TYPE_VOIDP],
     # System_GetOutputHandle: [TYPE_VOIDP],
     # System_GetPluginHandle: [TYPE_VOIDP],
     # System_GetPluginInfo: [TYPE_VOIDP],
-    # System_GetRecordDriverInfo: [TYPE_VOIDP],
-    # System_GetRecordNumDrivers: [TYPE_VOIDP],
-    # System_GetRecordPosition: [TYPE_VOIDP],
+    System_GetRecordDriverInfo: [TYPE_VOIDP, TYPE_INT, TYPE_VOIDP, TYPE_INT, TYPE_VOIDP] + Array.new(4, TYPE_VOIDP),
+    System_GetRecordNumDrivers: [TYPE_VOIDP, TYPE_VOIDP, TYPE_VOIDP],
+    System_GetRecordPosition: [TYPE_VOIDP, TYPE_INT, TYPE_VOIDP],
     System_GetReverbProperties: [TYPE_VOIDP, TYPE_INT, TYPE_VOIDP],
     # System_GetSoftwareChannels: [TYPE_VOIDP],
     # System_GetSoftwareFormat: [TYPE_VOIDP],
@@ -354,7 +371,7 @@ module FMOD
     System_GetUserData: [TYPE_VOIDP, TYPE_VOIDP],
     System_GetVersion: [TYPE_VOIDP, TYPE_VOIDP],
     System_Init: [TYPE_VOIDP, TYPE_INT, TYPE_INT, TYPE_VOIDP],
-    # System_IsRecording: [TYPE_VOIDP, TYPE_INT, TYPE_VOIDP],
+    System_IsRecording: [TYPE_VOIDP, TYPE_INT, TYPE_VOIDP],
     System_LoadGeometry: [TYPE_VOIDP, TYPE_VOIDP, TYPE_INT, TYPE_VOIDP],
     # System_LoadPlugin: [TYPE_VOIDP],
     System_LockDSP: [TYPE_VOIDP],
@@ -362,8 +379,8 @@ module FMOD
     System_MixerSuspend: [TYPE_VOIDP],
     # System_PlayDSP: [TYPE_VOIDP],
     System_PlaySound: [TYPE_VOIDP, TYPE_VOIDP, TYPE_VOIDP, TYPE_INT, TYPE_VOIDP],
-    # System_RecordStart: [TYPE_VOIDP],
-    # System_RecordStop: [TYPE_VOIDP],
+    System_RecordStart: [TYPE_VOIDP, TYPE_INT, TYPE_VOIDP, TYPE_INT],
+    System_RecordStop: [TYPE_VOIDP, TYPE_INT],
     # System_RegisterCodec: [TYPE_VOIDP],
     # System_RegisterDSP: [TYPE_VOIDP],
     # System_RegisterOutput: [TYPE_VOIDP],
@@ -377,10 +394,10 @@ module FMOD
     # System_SetDriver: [TYPE_VOIDP],
     # System_SetDSPBufferSize: [TYPE_VOIDP],
     # System_SetFileSystem: [TYPE_VOIDP],
-    # System_SetGeometrySettings: [TYPE_VOIDP],
+    System_SetGeometrySettings: [TYPE_VOIDP, TYPE_FLOAT],
     # System_SetNetworkProxy: [TYPE_VOIDP],
     # System_SetNetworkTimeout: [TYPE_VOIDP],
-    # System_SetOutput: [TYPE_VOIDP],
+    System_SetOutput: [TYPE_VOIDP, TYPE_INT],
     # System_SetOutputByPlugin: [TYPE_VOIDP],
     # System_SetPluginPath: [TYPE_VOIDP],
     System_SetReverbProperties: [TYPE_VOIDP, TYPE_INT, TYPE_VOIDP],
@@ -397,6 +414,10 @@ module FMOD
   def self.invoke(function, *args)
     result = @functions[function].call(*args)
     raise Error, result unless result.zero?
+  end
+
+  def self.invoke_protect(function, *args)
+    @functions[function].call(*args)
   end
 
   def self.load_library(library = nil, directory = nil)

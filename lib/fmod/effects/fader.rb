@@ -1,6 +1,4 @@
 
-require_relative '../core/dsp'
-
 module FMOD
   module Effects
 
