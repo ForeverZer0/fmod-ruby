@@ -2,77 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b33e2117-1861-4650-8c99-24e1de9bc271" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/.yardopts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/fmod/core.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/fmod/core/driver.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/fmod/core/output_type.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/fmod/core/sound_format.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/fmod/core/sound_type.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/fmod/dsp_connection.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/fmod/effects.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/fmod/system.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/fmod/core/speaker_index.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gemfile" beforeDir="false" afterPath="$PROJECT_DIR$/Gemfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LICENSE.txt" beforeDir="false" afterPath="$PROJECT_DIR$/LICENSE.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fmod.gemspec" beforeDir="false" afterPath="$PROJECT_DIR$/fmod.gemspec" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/fmod.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/fmod.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/fmod/core/channel.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/fmod/channel.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/fmod/core/channel_control.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/fmod/channel_control.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/fmod/core/channel_group.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/fmod/channel_group.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/fmod/core/dsp.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/fmod/dsp.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/fmod/core/dsp_chain.rb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/fmod/core/dsp_connection.rb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/fmod/core/error.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/fmod/error.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/fmod/core/geometry.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/fmod/geometry.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/fmod/core/handle.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/fmod/handle.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/fmod/core/polygon.rb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/fmod/core/reverb3D.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/fmod/reverb3D.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/fmod/core/sound.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/fmod/sound.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/fmod/core/sound_group.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/fmod/sound_group.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/fmod/core/system.rb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/fmod/core/tag_collection.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/fmod/core/speaker.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/fmod/core/structures.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/fmod/core/structures.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/fmod/effects/channel_mix.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/fmod/effects/channel_mix.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/fmod/effects/chorus.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/fmod/effects/chorus.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/fmod/effects/delay.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/fmod/effects/delay.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/fmod/effects/distortion.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/fmod/effects/distortion.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/fmod/effects/echo.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/fmod/effects/echo.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/fmod/effects/envelope_follower.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/fmod/effects/envelope_follower.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/fmod/effects/fader.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/fmod/effects/fader.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/fmod/effects/flange.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/fmod/effects/flange.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/fmod/effects/high_pass.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/fmod/effects/high_pass.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/fmod/effects/high_pass_simple.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/fmod/effects/high_pass_simple.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/fmod/effects/it_echo.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/fmod/effects/it_echo.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/fmod/effects/ladspa_plugin.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/fmod/effects/ladspa_plugin.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/fmod/effects/limiter.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/fmod/effects/limiter.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/fmod/effects/low_pass.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/fmod/effects/low_pass.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/fmod/effects/low_pass_simple.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/fmod/effects/low_pass_simple.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/fmod/effects/mixer.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/fmod/effects/mixer.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/fmod/effects/normalize.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/fmod/effects/normalize.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/fmod/effects/oscillator.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/fmod/effects/oscillator.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/fmod/effects/param_eq.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/fmod/effects/param_eq.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/fmod/effects/return.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/fmod/effects/return.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/fmod/effects/send.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/fmod/effects/send.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/fmod/effects/transceiver.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/fmod/effects/transceiver.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/fmod/effects/tremolo.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/fmod/effects/tremolo.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/fmod/effects/vst_plugin.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/fmod/effects/vst_plugin.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/fmod/effects/winamp_plugin.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/fmod/effects/winamp_plugin.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/fmod/enums/channel_mask.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/fmod/core/channel_mask.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/fmod/enums/dsp_index.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/fmod/core/dsp_index.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/fmod/enums/dsp_type.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/fmod/core/dsp_type.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/fmod/enums/filter_type.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/fmod/core/filter_type.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/fmod/enums/init_flags.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/fmod/core/init_flags.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/fmod/enums/mode.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/fmod/core/mode.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/fmod/enums/parameter_type.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/fmod/core/parameter_type.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/fmod/enums/result.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/fmod/core/result.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/fmod/enums/sound_group_behavior.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/fmod/core/sound_group_behavior.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/fmod/enums/speaker.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/fmod/core/speaker.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/fmod/enums/speaker_mode.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/fmod/core/speaker_mode.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/fmod/enums/tag_data_type.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/fmod/core/tag_data_type.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/fmod/enums/time_unit.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/fmod/core/time_unit.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/fmod/enums/window_type.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/fmod/core/window_type.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/fmod/structures.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/fmod/core/structures.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/fmod/system.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/fmod/system.rb" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -84,7 +21,7 @@
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/fmod@bool_description.rcov" NAME="bool_description Coverage Results" MODIFIED="1529535971158" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/lib/fmod/structs" MODULE_NAME="fmod" />
     <SUITE FILE_PATH="coverage/fmod@structures.rcov" NAME="structures Coverage Results" MODIFIED="1529543048931" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/lib/fmod" MODULE_NAME="fmod" />
-    <SUITE FILE_PATH="coverage/fmod@IRB_console__fmod.rcov" NAME="IRB console: fmod Coverage Results" MODIFIED="1529888887539" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/lib" MODULE_NAME="fmod" />
+    <SUITE FILE_PATH="coverage/fmod@IRB_console__fmod.rcov" NAME="IRB console: fmod Coverage Results" MODIFIED="1529920552484" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/lib" MODULE_NAME="fmod" />
     <SUITE FILE_PATH="coverage/fmod@fmod.rcov" NAME="fmod Coverage Results" MODIFIED="1529399727108" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/lib" MODULE_NAME="fmod" />
     <SUITE FILE_PATH="coverage/fmod@vector.rcov" NAME="vector Coverage Results" MODIFIED="1529540050389" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/lib/fmod/structs" MODULE_NAME="fmod" />
     <SUITE FILE_PATH="coverage/fmod@test.rcov" NAME="test Coverage Results" MODIFIED="1529546352713" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/lib" MODULE_NAME="fmod" />
@@ -94,17 +31,8 @@
       <file leaf-file-name="fmod.rb" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/lib/fmod.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="390">
-              <caret line="350" column="43" lean-forward="true" selection-start-line="350" selection-start-column="43" selection-end-line="350" selection-end-column="43" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="core.rb" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lib/fmod/core.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="4" column="38" lean-forward="true" selection-start-line="4" selection-start-column="38" selection-end-line="4" selection-end-column="38" />
+            <state relative-caret-position="574">
+              <caret line="350" column="63" lean-forward="true" selection-start-line="350" selection-start-column="63" selection-end-line="350" selection-end-column="63" />
             </state>
           </provider>
         </entry>
@@ -112,8 +40,8 @@
       <file leaf-file-name="test.rb" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib/test.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="8" selection-start-line="8" selection-end-line="8" />
+            <state relative-caret-position="150">
+              <caret line="10" column="19" selection-start-line="10" selection-start-column="19" selection-end-line="10" selection-end-column="19" />
             </state>
           </provider>
         </entry>
@@ -121,8 +49,17 @@
       <file leaf-file-name="handle.rb" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib/fmod/handle.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="32">
-              <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
+            <state relative-caret-position="45">
+              <caret line="3" selection-start-line="3" selection-end-line="3" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="channel_control.rb" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/fmod/channel_control.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="9945">
+              <caret line="663" column="6" selection-start-line="663" selection-start-column="6" selection-end-line="663" selection-end-column="46" />
             </state>
           </provider>
         </entry>
@@ -130,8 +67,8 @@
       <file leaf-file-name="sound.rb" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib/fmod/sound.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="336">
-              <caret line="766" column="4" selection-start-line="766" selection-start-column="4" selection-end-line="766" selection-end-column="4" />
+            <state relative-caret-position="11295">
+              <caret line="753" column="78" selection-start-line="753" selection-start-column="78" selection-end-line="753" selection-end-column="78" />
             </state>
           </provider>
         </entry>
@@ -139,7 +76,7 @@
       <file leaf-file-name="geometry.rb" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib/fmod/geometry.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="232">
+            <state relative-caret-position="3360">
               <caret line="224" column="61" selection-start-line="224" selection-start-column="61" selection-end-line="224" selection-end-column="61" />
             </state>
           </provider>
@@ -148,8 +85,26 @@
       <file leaf-file-name="system.rb" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib/fmod/system.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="5640">
-              <caret line="376" selection-start-line="376" selection-end-line="376" />
+            <state relative-caret-position="395">
+              <caret line="523" lean-forward="true" selection-start-line="523" selection-end-line="523" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="structures.rb" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/fmod/core/structures.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="202">
+              <caret line="469" column="7" lean-forward="true" selection-start-line="469" selection-start-column="7" selection-end-line="469" selection-end-column="7" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="dsp.rb" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/fmod/dsp.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="75">
+              <caret line="18" column="7" lean-forward="true" selection-start-line="18" selection-start-column="7" selection-end-line="18" selection-end-column="7" />
             </state>
           </provider>
         </entry>
@@ -157,17 +112,8 @@
       <file leaf-file-name="channel_mix.rb" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib/fmod/effects/channel_mix.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="45">
-              <caret line="39" column="26" lean-forward="true" selection-start-line="39" selection-start-column="26" selection-end-line="39" selection-end-column="26" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="driver.rb" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lib/fmod/core/driver.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="30">
-              <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
+            <state relative-caret-position="150">
+              <caret line="41" column="8" lean-forward="true" selection-start-line="41" selection-start-column="8" selection-end-line="41" selection-end-column="8" />
             </state>
           </provider>
         </entry>
@@ -184,10 +130,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>{MultibandEq}</find>
-      <find>@see {BANDS}</find>
-      <find>, min[\w]*</find>
-      <find>method</find>
       <find>fader</find>
       <find>def in</find>
       <find>pointer</find>
@@ -214,6 +156,10 @@
       <find>require_relative '</find>
       <find>ChannelControl</find>
       <find>dsps</find>
+      <find>list</find>
+      <find>on_</find>
+      <find>Speake</find>
+      <find>3D Soun</find>
     </findStrings>
     <replaceStrings>
       <replace>int_ptr</replace>
@@ -232,7 +178,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/lib/fmod/enums/dsp_index.rb" />
         <option value="$PROJECT_DIR$/lib/fmod/enums/dsp_type.rb" />
         <option value="$PROJECT_DIR$/lib/fmod/enums/filter_type.rb" />
         <option value="$PROJECT_DIR$/lib/fmod/enums/init_flags.rb" />
@@ -260,7 +205,6 @@
         <option value="$PROJECT_DIR$/lib/fmod/core/sound.rb" />
         <option value="$PROJECT_DIR$/lib/fmod/core/channel.rb" />
         <option value="$PROJECT_DIR$/lib/fmod/core/dsp_connection.rb" />
-        <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/lib/fmod/core/channel_control.rb" />
         <option value="$PROJECT_DIR$/lib/fmod/structures.rb" />
         <option value="$PROJECT_DIR$/lib/fmod/core/system.rb" />
@@ -268,10 +212,7 @@
         <option value="$PROJECT_DIR$/Gemfile" />
         <option value="$PROJECT_DIR$/fmod.gemspec" />
         <option value="$PROJECT_DIR$/lib/fmod/enums/channel_mask.rb" />
-        <option value="$PROJECT_DIR$/lib/fmod/core/structures.rb" />
-        <option value="$PROJECT_DIR$/lib/fmod/effects/channel_mix.rb" />
         <option value="$PROJECT_DIR$/lib/fmod/core/output_type.rb" />
-        <option value="$PROJECT_DIR$/lib/fmod/system.rb" />
         <option value="$PROJECT_DIR$/lib/fmod/effects.rb" />
         <option value="$PROJECT_DIR$/lib/fmod/core.rb" />
         <option value="$PROJECT_DIR$/lib/test.rb" />
@@ -282,7 +223,12 @@
         <option value="$PROJECT_DIR$/lib/fmod/geometry.rb" />
         <option value="$PROJECT_DIR$/lib/fmod/core/tag_collection.rb" />
         <option value="$PROJECT_DIR$/lib/fmod/sound.rb" />
+        <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/lib/fmod/core/speaker.rb" />
+        <option value="$PROJECT_DIR$/lib/fmod/effects/channel_mix.rb" />
+        <option value="$PROJECT_DIR$/lib/fmod/core/structures.rb" />
         <option value="$PROJECT_DIR$/lib/fmod.rb" />
+        <option value="$PROJECT_DIR$/lib/fmod/system.rb" />
       </list>
     </option>
   </component>
@@ -304,6 +250,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -311,11 +258,21 @@
               <item name="fmod" type="b2602c69:ProjectViewProjectNode" />
               <item name="fmod" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="fmod" type="b2602c69:ProjectViewProjectNode" />
+              <item name="fmod" type="462c0819:PsiDirectoryNode" />
+              <item name="lib" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="fmod" type="b2602c69:ProjectViewProjectNode" />
+              <item name="fmod" type="462c0819:PsiDirectoryNode" />
+              <item name="lib" type="462c0819:PsiDirectoryNode" />
+              <item name="fmod" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -452,7 +409,8 @@
       <workItem from="1529631824540" duration="4834000" />
       <workItem from="1529639157238" duration="3420000" />
       <workItem from="1529687305793" duration="73463000" />
-      <workItem from="1529862995011" duration="21231000" />
+      <workItem from="1529862995011" duration="34480000" />
+      <workItem from="1529948176586" duration="12424000" />
     </task>
     <task id="LOCAL-00001" summary="- Initial commit">
       <created>1529793137397</created>
@@ -475,26 +433,32 @@
       <option name="project" value="LOCAL" />
       <updated>1529793270843</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Refactored and restructured&#10;Merged Enums and Structs namespace into Core namespace&#10;Documentation on various classes&#10;Continued functionality to System class (drivers, recording, etc)&#10;Guid structure added&#10;Updated gem file">
+      <created>1529889466371</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1529889466371</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="268586000" />
+    <option name="totallyTimeSpent" value="294259000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="11" />
-      <window_info active="true" anchor="bottom" id="Event Log" order="2" sideWeight="0.5045573" side_tool="true" visible="true" weight="0.27310345" />
-      <window_info anchor="right" x="0" y="0" width="337" height="638" id="Documentation" order="4" sideWeight="0.5095057" side_tool="true" visible="true" weight="0.19921875" />
+      <window_info anchor="bottom" id="Event Log" order="2" sideWeight="0.5026042" side_tool="true" visible="true" weight="0.32413793" />
+      <window_info anchor="right" x="0" y="0" width="337" height="638" id="Documentation" order="4" sideWeight="0.5095057" side_tool="true" visible="true" weight="0.21744792" />
       <window_info anchor="bottom" id="Database Changes" order="1" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="4" />
-      <window_info anchor="bottom" id="Run" order="7" sideWeight="0.49544272" visible="true" weight="0.27310345" />
-      <window_info anchor="bottom" id="Terminal" order="3" sideWeight="0.49934897" weight="0.32413793" />
-      <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.16796875" />
+      <window_info anchor="bottom" id="Run" order="7" sideWeight="0.49414062" weight="0.27310345" />
+      <window_info anchor="bottom" id="Terminal" order="3" sideWeight="0.49739584" visible="true" weight="0.32413793" />
+      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.16796875" />
       <window_info anchor="bottom" id="Docker" order="0" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="0" />
-      <window_info anchor="bottom" id="Find" order="6" sideWeight="0.49804688" weight="0.32965517" />
       <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="0" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="8" sideWeight="0.49934897" weight="0.4" />
@@ -505,6 +469,7 @@
       <window_info anchor="bottom" id="Messages" order="12" weight="0.32965517" />
       <window_info anchor="bottom" id="Message" order="5" />
       <window_info anchor="bottom" id="Cvs" order="9" weight="0.25" />
+      <window_info anchor="bottom" id="Find" order="6" sideWeight="0.49804688" weight="0.32965517" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -515,7 +480,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="- Initial commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="- Initial commit" />
+    <MESSAGE value="Refactored and restructured&#10;Merged Enums and Structs namespace into Core namespace&#10;Documentation on various classes&#10;Continued functionality to System class (drivers, recording, etc)&#10;Guid structure added&#10;Updated gem file" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactored and restructured&#10;Merged Enums and Structs namespace into Core namespace&#10;Documentation on various classes&#10;Continued functionality to System class (drivers, recording, etc)&#10;Guid structure added&#10;Updated gem file" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -523,6 +489,13 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/lib/fmod/system.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="8160">
+          <caret line="544" lean-forward="true" selection-start-line="544" selection-end-line="544" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/lib/fmod/structs/float_description.rb" />
     <entry file="file://$PROJECT_DIR$/lib/fmod/structs/integer_description.rb" />
     <entry file="file://$PROJECT_DIR$/lib/fmod/structs/bool_description.rb" />
@@ -562,24 +535,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/fmod/core/result.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="87" column="3" lean-forward="true" selection-start-line="87" selection-start-column="3" selection-end-line="87" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lib/fmod/core/sound_group_behavior.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
           <caret line="8" column="3" selection-start-line="8" selection-start-column="3" selection-end-line="8" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/fmod/core/speaker.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="3" selection-start-line="6" selection-start-column="3" selection-end-line="6" selection-end-column="3" />
         </state>
       </provider>
     </entry>
@@ -664,9 +623,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
           <caret line="29" column="3" lean-forward="true" selection-start-line="29" selection-start-column="3" selection-end-line="29" selection-end-column="3" />
-          <folding>
-            <element signature="e#149#620#2" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -693,23 +649,6 @@
           <caret line="8" column="69" lean-forward="true" selection-start-line="8" selection-start-column="69" selection-end-line="8" selection-end-column="69" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="5" lean-forward="true" selection-start-line="7" selection-start-column="5" selection-end-line="7" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/fmod/dsp.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="15" selection-start-line="15" selection-end-line="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Rakefile">
-      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/fmod/dsp_connection.rb">
       <provider selected="true" editor-type-id="text-editor">
@@ -746,31 +685,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/fmod/core/structures.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="181">
-          <caret line="248" column="46" lean-forward="true" selection-start-line="248" selection-start-column="46" selection-end-line="248" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lib/fmod/channel.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1440">
           <caret line="96" lean-forward="true" selection-start-line="96" selection-end-line="96" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/fmod/core/driver.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/fmod/effects/channel_mix.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="39" column="26" lean-forward="true" selection-start-line="39" selection-start-column="26" selection-end-line="39" selection-end-column="26" />
         </state>
       </provider>
     </entry>
@@ -781,27 +699,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/test.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" selection-start-line="8" selection-end-line="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/fmod/channel_control.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="497" column="12" lean-forward="true" selection-start-line="497" selection-start-column="12" selection-end-line="497" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/fmod/core/dsp_chain.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" selection-start-line="2" selection-end-line="2" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/fmod/core/dsp_chain.rb" />
     <entry file="file://$PROJECT_DIR$/lib/fmod/core.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
@@ -809,52 +707,103 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/fmod/handle.rb">
+    <entry file="file://$PROJECT_DIR$/lib/fmod/core/polygon.rb" />
+    <entry file="file://$PROJECT_DIR$/lib/fmod/core/tag_collection.rb" />
+    <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="32">
-          <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
+        <state relative-caret-position="225">
+          <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/fmod/core/polygon.rb">
+    <entry file="file://$PROJECT_DIR$/lib/fmod/core/driver.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" selection-start-line="2" selection-end-line="2" />
+        <state relative-caret-position="180">
+          <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/fmod/handle.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" selection-start-line="3" selection-end-line="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/fmod/channel_control.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="9945">
+          <caret line="663" column="6" selection-start-line="663" selection-start-column="6" selection-end-line="663" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/fmod/core/result.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" column="13" lean-forward="true" selection-start-line="1" selection-start-column="13" selection-end-line="1" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/fmod/core/speaker_index.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="13" column="24" lean-forward="true" selection-start-line="13" selection-start-column="24" selection-end-line="13" selection-end-column="24" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/fmod/geometry.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="232">
+        <state relative-caret-position="3360">
           <caret line="224" column="61" selection-start-line="224" selection-start-column="61" selection-end-line="224" selection-end-column="61" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/fmod/core/tag_collection.rb">
+    <entry file="file://$PROJECT_DIR$/lib/test.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" selection-start-line="4" selection-end-line="4" />
+        <state relative-caret-position="150">
+          <caret line="10" column="19" selection-start-line="10" selection-start-column="19" selection-end-line="10" selection-end-column="19" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/fmod/sound.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
-          <caret line="766" column="4" selection-start-line="766" selection-start-column="4" selection-end-line="766" selection-end-column="4" />
+        <state relative-caret-position="11295">
+          <caret line="753" column="78" selection-start-line="753" selection-start-column="78" selection-end-line="753" selection-end-column="78" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/fmod/effects/channel_mix.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="41" column="8" lean-forward="true" selection-start-line="41" selection-start-column="8" selection-end-line="41" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/fmod/dsp.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="18" column="7" lean-forward="true" selection-start-line="18" selection-start-column="7" selection-end-line="18" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/fmod/core/structures.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="202">
+          <caret line="469" column="7" lean-forward="true" selection-start-line="469" selection-start-column="7" selection-end-line="469" selection-end-column="7" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/fmod/system.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5640">
-          <caret line="376" selection-start-line="376" selection-end-line="376" />
+        <state relative-caret-position="395">
+          <caret line="523" lean-forward="true" selection-start-line="523" selection-end-line="523" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/fmod.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="350" column="43" lean-forward="true" selection-start-line="350" selection-start-column="43" selection-end-line="350" selection-end-column="43" />
+        <state relative-caret-position="574">
+          <caret line="350" column="63" lean-forward="true" selection-start-line="350" selection-start-column="63" selection-end-line="350" selection-end-column="63" />
         </state>
       </provider>
     </entry>

@@ -40,7 +40,8 @@ module FMOD
     class ChannelMix < Dsp
 
       ##
-      # Output channel count = input channel count. Mapping: (see {Speaker})
+      # Output channel count = input channel count.
+      # @see SpeakerIndex
       DEFAULT = 0
 
       ##

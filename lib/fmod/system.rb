@@ -9,6 +9,103 @@ module FMOD
 
     FileUsage = Struct.new(:sample, :stream, :other)
 
+    Speaker = Struct.new(:index, :x, :y, :active)
+
+    Plugin = Struct.new(:handle, :type, :name, :version)
+
+    def initialize(handle)
+      super
+      @rolloff_callbacks = []
+      sig = [TYPE_VOIDP, TYPE_FLOAT]
+      abi = FMOD.calling_convention
+      cb = Closure::BlockCaller.new(TYPE_FLOAT, sig, abi) do |channel, distance|
+        unless @rolloff_callbacks.empty?
+          chan = Channel.new(channel)
+          @rolloff_callbacks.each { |proc| proc.call(chan, distance) }
+        end
+        distance
+      end
+      FMOD.invoke(:System_Set3DRolloffCallback, self, cb)
+    end
+
+    def on_rolloff(proc = nil, &block)
+      cb = proc || block
+      raise LocalJumpError, "No block given."  if cb.nil?
+      @rolloff_callbacks << cb
+    end
+
+    # @group Speaker Positioning
+
+    ##
+    # Helper function to return the speakers as array.
+    # @return [Array<Speaker>] the array of speakers.
+    def speakers
+      each_speaker.to_a
+    end
+
+    ##
+    # @return [Speaker] the current speaker position for the selected speaker.
+    # @see SpeakerIndex
+    def speaker(index)
+      args = ["\0" * SIZEOF_FLOAT, "\0" * SIZEOF_FLOAT, "\0" * SIZEOF_INT ]
+      FMOD.invoke(:System_GetSpeakerPosition, self, index, *args)
+      args = [index] + args.join.unpack('ffl')
+      args[3] = args[3] != 0
+      Speaker.new(*args)
+    end
+
+    ##
+    # This function allows the user to specify the position of their actual
+    # physical speaker to account for non standard setups.
+    #
+    # It also allows the user to disable speakers from 3D consideration in a
+    # game.
+    #
+    # The function is for describing the "real world" speaker placement to
+    # provide a more natural panning solution for 3D sound. Graphical
+    # configuration screens in an application could draw icons for speaker
+    # placement that the user could position at their will.
+    #
+    # @overload set_speaker(speaker)
+    #   @param speaker [Speaker] The speaker to set.
+    # @overload set_speaker(index, x, y, active = true)
+    #   @param index [Integer] The index of the speaker to set.
+    #     @see SpeakerIndex
+    #   @param x [Float] The 2D X position relative to the listener.
+    #   @param y [Float] The 2D Y position relative to the listener.
+    #   @param active [Boolean] The active state of a speaker.
+    # @return [void]
+    def set_speaker(*args)
+      unless [1, 3, 4].include?(args.size)
+        message = "wrong number of arguments: #{args.size} for 1, 3, or 4"
+        raise ArgumentError, message
+      end
+      index, x, y, active = args[0].is_a?(Speaker) ? args[0].values : args
+      active = true if args.size == 3
+      FMOD.invoke(:System_SetSpeakerPosition, self, index, x, y, active.to_i)
+    end
+
+    ##
+    # @overload each_speaker
+    #   When called with a block, yields each speaker in turn before returning
+    #   self.
+    #   @yield [speaker] Yields a speaker to the block.
+    #   @yieldparam speaker [Speaker] The current enumerated speaker.
+    #   @return [self]
+    # @overload each_speaker
+    #   When called without a block, returns an enumerator for the speakers.
+    #   @return [Enumerator]
+    def each_speaker
+      return to_enum(:each_speaker) unless block_given?
+      SpeakerIndex.constants(false).each do |const|
+        index = SpeakerIndex.const_get(const)
+        yield speaker(index) rescue next
+      end
+      self
+    end
+
+    # @!endgroup
+
     # @!group Object Creation
 
     ##
@@ -358,7 +455,89 @@ module FMOD
 
     # @!endgroup
 
+    # @!group Sound Card Drivers
+
+    ##
+    # @!attribute output
+    # The output mode for the platform. This is for selecting different OS
+    # specific APIs which might have different features.
+    #
+    # Changing this is only necessary if you want to specifically switch away
+    # from the default output mode for the operating system. The most optimal
+    # mode is selected by default for the operating system.
+    #
+    # @see OutputMode
+    # @return [Integer] the output mode for the platform.
+    integer_reader(:output, :System_GetOutput)
+    integer_writer(:output=, :System_SetOutput)
+
+    ##
+    # @!attribute [r] driver_count
+    # @return [Integer] the number of sound-card devices on the machine,
+    #   specific to the output mode set with {#output}.
+    integer_reader(:driver_count, :System_GetNumDrivers)
+
+    ##
+    # @!attribute current_driver
+    # @return [Integer] the currently selected driver number. 0 represents the
+    #   primary or default driver.
+    integer_reader(:current_driver, :System_GetDriver)
+    integer_writer(:current_driver=, :System_SetDriver)
+
+    ##
+    # Retrieves identification information about a sound device specified by its
+    # index, and specific to the output mode set with {#output}.
+    #
+    # @param id [Integer] Index of the sound driver device. The total number of
+    #   devices can be found with {#driver_count}.
+    #
+    # @return [Driver] the driver information.
+    def driver_info(id)
+      args = [id, "\0" * 512, 512, Guid.new] + (0...3).map { "\0" * SIZEOF_INT }
+      FMOD.invoke(:System_GetDriverInfo, self, *args)
+      Driver.send(:new, args)
+    end
+
+    ##
+    # @!attribute output_handle
+    # Retrieves a pointer to the system level output device module. This means a
+    # pointer to a DirectX "LPDIRECTSOUND", or a WINMM handle, or with something
+    # like with {OutputType::NO_SOUND} output, the handle will be {FMOD::NULL}.
+    #
+    # @return [Pointer] the handle to the output mode's native hardware API
+    #   object.
+    def output_handle
+      FMOD.invoke(:System_GetOutputHandle, self, handle = int_ptr)
+      Pointer.new(handle.unpack1('J'))
+    end
+
+    ##
+    # @!attribute [r] drivers
+    # @return [Array<Driver>] the array of available drivers.
+    def drivers
+      (0...driver_count).map { |id| driver_info(id) }
+    end
+
+    # @!endgroup
+
     # @!group 3D Sound
+
+    ##
+    # Calculates geometry occlusion between a listener and a sound source.
+    #
+    # @param listener [Vector] The listener position.
+    # @param source [Vector] The source position.
+    #
+    # @return [Array(Float, Float)] the occlusion values as an array, the first
+    #   element being the direct occlusion value, and the second element being
+    #   the reverb occlusion value.
+    def geometry_occlusion(listener, source)
+      FMOD.check_type(listener, Vector)
+      FMOD.check_type(source, Vector)
+      args = ["\0" * SIZEOF_FLOAT, "\0" * SIZEOF_FLOAT]
+      FMOD.invoke(:System_GetGeometryOcclusion, self, listener, source, *args)
+      args.join.unpack('ff')
+    end
 
     ##
     # @!attribute listeners
@@ -394,52 +573,264 @@ module FMOD
 
     # @!endgroup
 
-
-
-
-
-
-
-
-
-
-
-    # @!group Sound Card Drivers
+    # @!group Plugin Support
 
     ##
-    # @!attribute output
-    # The output mode for the platform. This is for selecting different OS
-    # specific APIs which might have different features.
+    # Loads an FMOD plugin. This could be a DSP, file format or output plugin.
     #
-    # Changing this is only necessary if you want to specifically switch away
-    # from the default output mode for the operating system. The most optimal
-    # mode is selected by default for the operating system.
+    # @param filename [String] Filename of the plugin to be loaded.
+    # @param priority [Integer] Codec plugins only, priority of the codec
+    #   compared to other codecs, where 0 is the most important and higher
+    #   numbers are less important.
     #
-    # @see OutputMode
-    # @return [Integer] the output mode for the platform.
-    integer_reader(:output, :System_GetOutput)
-    integer_writer(:output=, :System_SetOutput)
+    # @return [Integer] the handle to the plugin.
+    def load_plugin(filename, priority = 128)
+      # noinspection RubyResolve
+      path = filename.encode(Encoding::UTF_8)
+      handle = "\0" * SIZEOF_INT
+      FMOD.invoke(:System_LoadPlugin, self, path, handle, priority)
+      handle.unpack1('L')
+    end
 
     ##
-    # @!attribute [r] driver_count
-    # @return [Integer] the number of sound-card devices on the machine,
-    #   specific to the output mode set with {#output}.
-    integer_reader(:driver_count, :System_GetNumDrivers)
+    # Unloads a plugin from memory.
+    #
+    # @param handle [Integer] Handle to a pre-existing plugin.
+    #
+    # @return [void]
+    def unload_plugin(handle)
+      FMOD.invoke(:System_UnloadPlugin, self, handle)
+    end
 
     ##
-    # @!attribute current_driver
-    # @return [Integer] the currently selected driver number.
-    integer_reader(:current_driver, :System_GetDriver)
+    # Retrieves the number of available plugins loaded into FMOD at the current
+    # time.
+    #
+    # @param type [Symbol] Determines the type of plugin to factor into the
+    #   count.
+    # @option type [Symbol] (:all) The following values are valid:
+    #   * <b>:all</b> All plugin types.
+    #   * <b>:output</b> The plugin type is an output module. FMOD mixed audio
+    #     will play through one of these devices
+    #   * <b>:codec</b> The plugin type is a file format codec. FMOD will use
+    #     these codecs to load file formats for playback.
+    #   * <b>:dsp</b> The plugin type is a DSP unit. FMOD will use these plugins
+    #     as part of its DSP network to apply effects to output or generate
+    #     sound in realtime.
+    # @return [Integer] the plugin count.
+    def plugin_count(type: :all)
+      plugin_type = case type
+      when :output then 0
+      when :codec then 1
+      when :dsp then 2
+      else nil
+      end
+      count = "\0" * SIZEOF_INT
+      unless plugin_type.nil?
+        FMOD.invoke(:System_GetNumPlugins, self, plugin_type, count)
+        return count.unpack1('l')
+      end
+      total = 0
+      (0..2).each do |i|
+        FMOD.invoke(:System_GetNumPlugins, self, i, count)
+        total += count.unpack1('l')
+      end
+      total
+    end
 
+    ##
+    # Specify a base search path for plugins so they can be placed somewhere
+    # else than the directory of the main executable.
+    #
+    # @param directory [String] A string containing a correctly formatted path
+    #   to load plugins from.
+    #
+    # @return [void]
+    def plugin_path(directory)
+      # noinspection RubyResolve
+      path = directory.encode(Encoding::UTF_8)
+      FMOD.invoke(:System_SetPluginPath, self, path)
+    end
 
-    def driver_info(id)
-      args = [id, "\0" * 512, 512, Guid.new] + (0...3).map { "\0" * SIZEOF_INT }
-      FMOD.invoke(:System_GetDriverInfo, self, *args)
-      Driver.send(:new, args)
+    ##
+    # Retrieves the handle of a plugin based on its type and relative index.
+    #
+    # @param type [Symbol] The type of plugin type.
+    #   * <b>:output</b> The plugin type is an output module. FMOD mixed audio
+    #     will play through one of these devices
+    #   * <b>:codec</b> The plugin type is a file format codec. FMOD will use
+    #     these codecs to load file formats for playback.
+    #   * <b>:dsp</b> The plugin type is a DSP unit. FMOD will use these plugins
+    #     as part of its DSP network to apply effects to output or generate
+    #     sound in realtime.
+    # @param index [Integer] The relative index for the type of plugin.
+    #
+    # @return [Integer] the handle to the plugin.
+    def plugin(type, index)
+      handle = "\0" * SIZEOF_INT
+      plugin_type = [:output, :codec, :dsp].index(type)
+      raise ArgumentError, "Invalid plugin type: #{type}." if plugin_type.nil?
+      FMOD.invoke(:System_GetPluginHandle, self, plugin_type, index, handle)
+      handle.unpack1('L')
+    end
+
+    ##
+    # Returns nested plugin definition for the given index.
+    #
+    # For plugins consisting of a single definition, only index 0 is valid and
+    # the returned handle is the same as the handle passed in.
+    #
+    # @param handle [Integer] A handle to an existing plugin returned from
+    #   {#load_plugin}.
+    # @param index [Integer] Index into the list of plugin definitions.
+    #
+    # @return [Integer] the handle to the nested plugin.
+    def nested_plugin(handle, index)
+      nested = "\0" * SIZEOF_INT
+      FMOD.invoke(:System_GetNestedPlugin, self, handle, index, nested)
+      nested.unpack1('L')
+    end
+
+    ##
+    # Returns the number of plugins nested in the one plugin file.
+    #
+    # Plugins normally have a single definition in them, in which case the count
+    # is always 1.
+    #
+    # For plugins that have a list of definitions, this function returns the
+    # number of plugins that have been defined. {#nested_plugin} can be used to
+    # find each handle.
+    #
+    # @param handle [Integer] A handle to an existing plugin returned from
+    #   {#load_plugin}.
+    #
+    # @return [Integer] the number of nested plugins.
+    def nested_plugin_count(handle)
+      count = "\0" * SIZEOF_INT
+      FMOD.invoke(:System_GetNumNestedPlugins, self, handle, count)
+      count.unpack1('l')
+    end
+
+    ##
+    # Retrieves information to display for the selected plugin.
+    #
+    # @param handle [Integer] The handle to the plugin.
+    #
+    # @return [Plugin] the plugin information.
+    def plugin_info(handle)
+      name, type, vs = "\0" * 512, "\0" * SIZEOF_INT, "\0" * SIZEOF_INT
+      FMOD.invoke(:System_GetPluginInfo, self, handle, type, name, 512, vs)
+      type = [:output, :codec, :dsp][type]
+      # noinspection RubyResolve
+      name = name.delete("\0").force_encoding(Encoding::UTF_8)
+      vs = "%08X" % vs.unpack1('L')
+      Plugin.new(handle, type, name, "#{vs[0, 4].to_i}.#{vs[4, 4].to_i}")
+    end
+
+    ##
+    # @!attribute plugin_output
+    # @return [Integer] the currently selected output as an ID in the list of
+    #   output plugins.
+    integer_reader(:plugin_output, :System_GetOutputByPlugin)
+    integer_writer(:plugin_output=, :System_SetOutputByPlugin)
+
+    ##
+    # @param handle [Integer] Handle to a pre-existing DSP plugin.
+    # @return [DspDescription] the description structure for a pre-existing DSP
+    #   plugin.
+    def plugin_dsp_info(handle)
+      FMOD.invoke(:System_GetDSPInfoByPlugin, self, handle, address = int_ptr)
+      DspDescription.new(address)
+    end
+
+    ##
+    # Enumerates the loaded plugins, optionally specifying the type of plugins
+    # to loop through.
+    #
+    # @overload each_plugin(plugin_type = :all)
+    #   When a block is passed, yields each plugin to the block in turn before
+    #   returning self.
+    #   @yield [plugin] Yields a plugin to the block.
+    #   @yieldparam plugin [Plugin] The currently enumerated plugin.
+    #   @return [self]
+    # @overload each_plugin(plugin_type = :all)
+    #   When no block is given, returns an enumerator for the plugins.
+    #   @return [Enumerator]
+    # @param plugin_type [Symbol] Specifies the type of plugin(s) to enumerate.
+    #   * <b>:output</b> The plugin type is an output module. FMOD mixed audio
+    #     will play through one of these devices
+    #   * <b>:codec</b> The plugin type is a file format codec. FMOD will use
+    #     these codecs to load file formats for playback.
+    #   * <b>:dsp</b> The plugin type is a DSP unit. FMOD will use these plugins
+    #     as part of its DSP network to apply effects to output or generate
+    #     sound in realtime.
+    def each_plugin(plugin_type = :all)
+      return to_enum(:each_plugin) unless block_given?
+      types = plugin_type == :all ? [:output, :codec, :dsp] : [plugin_type]
+      types.each do |type|
+        (0...plugin_count(type)).each do |index|
+          handle = plugin(type, index)
+          yield plugin_info(handle)
+        end
+      end
+      self
     end
 
     # @!endgroup
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    def network_proxy
+      buffer = "\0" * 512
+      FMOD.invoke(:System_GetNetworkProxy, self, buffer, 512)
+      # noinspection RubyResolve
+      buffer.delete("\0").force_encoding(Encoding::UTF_8)
+    end
+
+    def network_proxy=(url)
+      # noinspection RubyResolve
+      FMOD.invoke(:System_SetNetworkProxy, self, url.encode(Encoding::UTF_8))
+    end
+
+    integer_reader(:network_timeout, :System_GetNetworkTimeout)
+    integer_writer(:network_timeout=, :System_SetNetworkTimeout)
+
+    integer_reader(:software_channels, :System_GetSoftwareChannels)
+    integer_writer(:software_channels=, :System_SetSoftwareChannels, 0, 64)
 
 
 
@@ -490,8 +881,8 @@ module FMOD
     # When a sound is played, it will use the sound's default frequency and
     # priority.
     #
-    # A sound defined as FMOD_3D will by default play at the position of the
-    # listener.
+    # A sound defined as {Mode::THREE_D} will by default play at the position of
+    # the listener.
     #
     # Channels are reference counted. If a channel is stolen by the FMOD
     # priority system, then the handle to the stolen voice becomes invalid, and
@@ -601,8 +992,6 @@ module FMOD
       FMOD.invoke(:System_UnlockDSP, self)
     end
 
-
-
     ##
     # Helper method to create and enumerate each type of internal DSP unit.
     # @overload each_dsp
@@ -635,6 +1024,18 @@ module FMOD
       (total ? count : real).unpack1('l')
     end
 
+    ##
+    # Retrieves a handle to a channel by ID.
+    #
+    # @param id [Integer] Index in the FMOD channel pool. Specify a channel
+    #   number from 0 to the maximum number of channels specified in {#create}
+    #   minus 1.
+    #
+    # @return [Channel] the requested channel.
+    def channel(id)
+      FMOD.invoke(:System_GetChannel, self, id, handle = int_ptr)
+      Channel.new(handle)
+    end
 
   end
 end

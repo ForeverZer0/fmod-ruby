@@ -466,7 +466,11 @@ module FMOD
     end
 
     class SoundExInfo < Structure
+      # TODO
+    end
 
+    class DspDescription < Structure
+      # TODO
     end
   end
 end
