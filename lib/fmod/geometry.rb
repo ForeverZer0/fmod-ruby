@@ -34,7 +34,7 @@ module FMOD
     end
 
     def position=(vector)
-      FMOD.check_type(vector, Vector)
+      FMOD.is_type?(vector, Vector)
       FMOD.invoke(:Geometry_SetPosition, self, vector)
     end
 
@@ -53,7 +53,7 @@ module FMOD
     end
 
     def scale=(vector)
-      FMOD.check_type(vector, Vector)
+      FMOD.is_type?(vector, Vector)
       FMOD.invoke(:Geometry_SetScale, self, vector)
     end
 
@@ -71,7 +71,7 @@ module FMOD
     end
 
     def rotation=(rotation)
-      FMOD.check_type(rotation, Rotation)
+      FMOD.is_type?(rotation, Rotation)
       rotate(*rotation.values)
     end
 
@@ -86,8 +86,8 @@ module FMOD
     #   vector. You can specify +nil+ to not update the upwards orientation of
     #   the geometry object.
     def rotate(forward, upward)
-      FMOD.check_type(forward, Vector) unless forward.nil?
-      FMOD.check_type(upward, Vector) unless upward.nil?
+      FMOD.is_type?(forward, Vector) unless forward.nil?
+      FMOD.is_type?(upward, Vector) unless upward.nil?
       FMOD.invoke(:Geometry_SetRotation, self, forward, upward)
     end
 
@@ -349,7 +349,7 @@ module FMOD
           message = "Index #{index} outside of bounds: 0...#{vertex.count}"
           raise IndexError, message
         end
-        FMOD.check_type(vertex, Vector)
+        FMOD.is_type?(vertex, Vector)
         FMOD.invoke(:Geometry_SetPolygonVertex, @geometry, @index, index, vertex)
       end
 

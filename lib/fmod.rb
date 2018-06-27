@@ -2,7 +2,6 @@
 require 'fiddle'
 require 'rbconfig'
 
-
 module FMOD
 
   include Fiddle
@@ -33,6 +32,10 @@ module FMOD
   # DSP in the mix graph. This is unrelated to the number of possible {Reverb3D}
   # objects, which is unlimited.
   MAX_REVERB = 4
+
+  ##
+  # Null value for a port index. Use when a port index is not required.
+  PORT_INDEX_NONE = 0xFFFFFFFFFFFFFFFF
 
   require_relative 'fmod/version.rb'
   require_relative 'fmod/core'
@@ -316,8 +319,8 @@ module FMOD
     ############################################################################
     # System
     ############################################################################
-    # System_AttachChannelGroupToPort: [TYPE_VOIDP],
-    # System_AttachFileSystem: [TYPE_VOIDP],
+    System_AttachChannelGroupToPort: [TYPE_VOIDP, TYPE_INT, TYPE_INT, TYPE_VOIDP, TYPE_INT],
+    System_AttachFileSystem: Array.new(5, TYPE_VOIDP),
     System_Close: [TYPE_VOIDP],
     System_Create: [TYPE_VOIDP],
     System_CreateChannelGroup: [TYPE_VOIDP, TYPE_VOIDP, TYPE_VOIDP],
@@ -329,18 +332,18 @@ module FMOD
     System_CreateSound: [TYPE_VOIDP, TYPE_VOIDP, TYPE_INT, TYPE_VOIDP, TYPE_VOIDP],
     System_CreateSoundGroup: [TYPE_VOIDP, TYPE_VOIDP, TYPE_VOIDP],
     System_CreateStream: [TYPE_VOIDP, TYPE_VOIDP, TYPE_INT, TYPE_VOIDP, TYPE_VOIDP],
-    # System_DetachChannelGroupFromPort: [TYPE_VOIDP],
+    System_DetachChannelGroupFromPort: [TYPE_VOIDP, TYPE_VOIDP],
     # System_Get3DListenerAttributes: [TYPE_VOIDP],
     System_Get3DNumListeners: [TYPE_VOIDP, TYPE_VOIDP],
-    # System_Get3DSettings: [TYPE_VOIDP],
+    System_Get3DSettings: Array.new(4, TYPE_VOIDP),
     # System_GetAdvancedSettings: [TYPE_VOIDP],
     System_GetChannel: [TYPE_VOIDP, TYPE_INT, TYPE_VOIDP],
     System_GetChannelsPlaying: Array.new(3, TYPE_VOIDP),
     System_GetCPUUsage: Array.new(6, TYPE_VOIDP),
-    # System_GetDefaultMixMatrix: [TYPE_VOIDP],
+    System_GetDefaultMixMatrix: [TYPE_VOIDP, TYPE_INT, TYPE_INT, TYPE_VOIDP, TYPE_INT],
     System_GetDriver: [TYPE_VOIDP, TYPE_VOIDP],
     System_GetDriverInfo: [TYPE_VOIDP, TYPE_INT, TYPE_VOIDP, TYPE_INT, TYPE_VOIDP] + Array.new(3, TYPE_VOIDP),
-    # System_GetDSPBufferSize: [TYPE_VOIDP],
+    System_GetDSPBufferSize: Array.new(3, TYPE_VOIDP),
     System_GetDSPInfoByPlugin: [TYPE_VOIDP, TYPE_INT, TYPE_VOIDP],
     System_GetFileUsage: Array.new(4, TYPE_VOIDP),
     System_GetGeometryOcclusion: Array.new(5, TYPE_VOIDP),
@@ -363,11 +366,11 @@ module FMOD
     System_GetRecordPosition: [TYPE_VOIDP, TYPE_INT, TYPE_VOIDP],
     System_GetReverbProperties: [TYPE_VOIDP, TYPE_INT, TYPE_VOIDP],
     System_GetSoftwareChannels: [TYPE_VOIDP, TYPE_VOIDP],
-    # System_GetSoftwareFormat: [TYPE_VOIDP],
+    System_GetSoftwareFormat: Array.new(4, TYPE_VOIDP),
     System_GetSoundRAM: Array.new(4, TYPE_VOIDP),
-    # System_GetSpeakerModeChannels: [TYPE_VOIDP],
+    System_GetSpeakerModeChannels: [TYPE_VOIDP, TYPE_INT, TYPE_VOIDP],
     System_GetSpeakerPosition: [TYPE_VOIDP, TYPE_INT, TYPE_VOIDP, TYPE_VOIDP, TYPE_VOIDP],
-    # System_GetStreamBufferSize: [TYPE_VOIDP],
+    System_GetStreamBufferSize: Array.new(3, TYPE_VOIDP),
     System_GetUserData: [TYPE_VOIDP, TYPE_VOIDP],
     System_GetVersion: [TYPE_VOIDP, TYPE_VOIDP],
     System_Init: [TYPE_VOIDP, TYPE_INT, TYPE_INT, TYPE_VOIDP],
@@ -388,11 +391,11 @@ module FMOD
     # System_Set3DListenerAttributes: [TYPE_VOIDP],
     System_Set3DNumListeners: [TYPE_VOIDP, TYPE_INT],
     System_Set3DRolloffCallback: [TYPE_VOIDP, TYPE_VOIDP],
-    # System_Set3DSettings: [TYPE_VOIDP],
+    System_Set3DSettings: [TYPE_VOIDP, TYPE_FLOAT, TYPE_FLOAT, TYPE_FLOAT],
     # System_SetAdvancedSettings: [TYPE_VOIDP],
     # System_SetCallback: [TYPE_VOIDP],
     System_SetDriver: [TYPE_VOIDP, TYPE_INT],
-    # System_SetDSPBufferSize: [TYPE_VOIDP],
+    System_SetDSPBufferSize: [TYPE_VOIDP, TYPE_INT, TYPE_INT],
     # System_SetFileSystem: [TYPE_VOIDP],
     System_SetGeometrySettings: [TYPE_VOIDP, TYPE_FLOAT],
     System_SetNetworkProxy: [TYPE_VOIDP, TYPE_VOIDP],
@@ -402,9 +405,9 @@ module FMOD
     System_SetPluginPath: [TYPE_VOIDP, TYPE_VOIDP],
     System_SetReverbProperties: [TYPE_VOIDP, TYPE_INT, TYPE_VOIDP],
     System_SetSoftwareChannels: [TYPE_VOIDP, TYPE_INT],
-    # System_SetSoftwareFormat: [TYPE_VOIDP],
+    System_SetSoftwareFormat: [TYPE_VOIDP, TYPE_INT, TYPE_INT, TYPE_INT],
     System_SetSpeakerPosition: [TYPE_VOIDP, TYPE_INT, TYPE_FLOAT, TYPE_FLOAT, TYPE_INT],
-    # System_SetStreamBufferSize: [TYPE_VOIDP],
+    System_SetStreamBufferSize: [TYPE_VOIDP, TYPE_INT, TYPE_INT],
     System_SetUserData: [TYPE_VOIDP, TYPE_VOIDP],
     System_UnloadPlugin: [TYPE_VOIDP, TYPE_INT],
     System_UnlockDSP: [TYPE_VOIDP],
@@ -456,7 +459,7 @@ module FMOD
     @abi = @functions.values.sample.abi
   end
 
-  def self.check_type(object, type, exception = true)
+  def self.is_type?(object, type, exception = true)
     return true if object.is_a?(type)
     return false unless exception
     raise TypeError, "#{object} is not a #{type}."
@@ -466,6 +469,12 @@ module FMOD
     return true if index.between?(min, max)
     return false unless exception
     raise RangeError, 'Value outside of valid range.'
+  end
+
+  def self.uint2version(version)
+    version = version.unpack1('L') if version.is_a?(String)
+    vs = "%08X" % version
+    "#{vs[0, 4].to_i}.#{vs[4, 2].to_i}.#{vs[6, 2].to_i}"
   end
 
   ##
@@ -478,7 +487,3 @@ module FMOD
     @abi
   end
 end
-
-
-
-

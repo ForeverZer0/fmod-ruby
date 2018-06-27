@@ -13,6 +13,21 @@ module FMOD
 
     Plugin = Struct.new(:handle, :type, :name, :version)
 
+    SoftwareFormat = Struct.new(:sample_rate, :speaker_mode, :raw_channels)
+
+    DspBuffer = Struct.new(:size, :count)
+
+    ##
+    # The internal buffer size for streams opened after this call. Larger values
+    # will consume more memory, whereas smaller values may cause buffer
+    # under-run/starvation/stuttering caused by large delays in disk access (ie
+    # net-stream), or cpu usage in slow machines, or by trying to play too many
+    # streams at once.
+    # @attr size [Integer] The size of stream file buffer. Default is 16384.
+    # @attr type [Integer] Type of unit for stream file buffer size.
+    #   @see TimeUnit
+    StreamBuffer = Struct.new(:size, :type)
+
     def initialize(handle)
       super
       @rolloff_callbacks = []
@@ -35,6 +50,28 @@ module FMOD
     end
 
     # @group Speaker Positioning
+
+    ##
+    # Generates a "default" matrix based on the specified source and target
+    # speaker mode.
+    #
+    # @param source [Integer] The speaker mode being converted from.
+    # @param target [Integer] The speaker mode being converted to.
+    #
+    # @note _source_ and _target_ must not exceed {FMOD::MAX_CHANNEL_WIDTH}.
+    # @see FMOD::MAX_CHANNEL_WIDTH
+    # @see SpeakerMode
+    #
+    # @return [<Array<Array<Float>>] the mix matrix.
+    def default_matrix(source, target)
+      max = FMOD::MAX_CHANNEL_WIDTH
+      raise RangeError, "source channels cannot exceed #{max}" if source > max
+      raise RangeError, "target channels cannot exceed #{max}" if target > max
+      return [] if source < 1 || target < 1
+      buffer = "\0" * (SIZEOF_FLOAT * source * target)
+      FMOD.invoke(:System_GetDefaultMixMatrix, self, source, target, buffer, 0)
+      buffer.unpack('f*').each_slice(source).to_a
+    end
 
     ##
     # Helper function to return the speakers as array.
@@ -189,8 +226,8 @@ module FMOD
     #
     # @return [Dsp] the created DSP.
     def create_dsp(type)
-      unless FMOD.check_type(type, Integer, false)
-        unless FMOD.check_type(type, Class) && type < Dsp
+      unless FMOD.is_type?(type, Integer, false)
+        unless FMOD.is_type?(type, Class) && type < Dsp
           raise TypeError, "#{type} must either be or inherit from #{Dsp}."
         end
       end
@@ -384,7 +421,7 @@ module FMOD
     #
     # @return [void]
     def record_start(driver_id, sound, loop = false)
-      FMOD.check_type(sound, Sound)
+      FMOD.is_type?(sound, Sound)
       FMOD.invoke(:System_RecordStart, self, driver_id, sound, loop.to_i)
     end
 
@@ -523,6 +560,77 @@ module FMOD
     # @!group 3D Sound
 
     ##
+    # @!attribute doppler_scale
+    # The general scaling factor for how much the pitch varies due to doppler
+    # shifting in 3D sound.
+    #
+    # Doppler is the pitch bending effect when a sound comes towards the
+    # listener or moves away from it, much like the effect you hear when a train
+    # goes past you with its horn sounding. With "doppler scale" you can
+    # exaggerate or diminish the effect. FMOD's effective speed of sound at a
+    # doppler factor of 1.0 is 340 m/s.
+    #
+    # @return [Float] the scaling factor.
+
+    def doppler_scale
+      scale = "\0" * SIZEOF_FLOAT
+      FMOD.invoke(:System_Get3DSettings, self, scale, nil, nil)
+      scale.unpack1('f')
+    end
+
+    def doppler_scale=(scale)
+      FMOD.invoke(:System_Set3DSettings, self, scale,
+        distance_factor, rolloff_scale)
+    end
+
+    ##
+    # @!attribute distance_factor
+    # The FMOD 3D engine relative distance factor, compared to 1.0 meters.
+    #
+    # Another way to put it is that it equates to "how many units per meter does
+    # your engine have". For example, if you are using feet then "scale" would
+    # equal 3.28.
+    #
+    # @return [Float] the relative distance factor.
+
+    def distance_factor
+      factor = "\0" * SIZEOF_FLOAT
+      FMOD.invoke(:System_Get3DSettings, self, nil, factor, nil)
+      factor.unpack1('f')
+    end
+
+    def distance_factor=(factor)
+      FMOD.invoke(:System_Set3DSettings, self, doppler_scale,
+        factor, rolloff_scale)
+    end
+
+    ##
+    # @!attribute rolloff_scale
+    # The global attenuation rolloff factor for {Mode::INVERSE_ROLLOFF_3D} based
+    # sounds only (which is the default).
+    #
+    # Volume for a sound set to {Mode::INVERSE_ROLLOFF_3D} will scale at minimum
+    # distance / distance. This gives an inverse attenuation of volume as the
+    # source gets further away (or closer). Setting this value makes the sound
+    # drop off faster or slower. The higher the value, the faster volume will
+    # attenuate, and conversely the lower the value, the slower it will
+    # attenuate. For example a rolloff factor of 1 will simulate the real world,
+    # where as a value of 2 will make sounds attenuate 2 times quicker.
+    #
+    # @return [Float] the global rolloff factor.
+
+    def rolloff_scale
+      scale = "\0" * SIZEOF_FLOAT
+      FMOD.invoke(:System_Get3DSettings, self, nil, nil, scale)
+      scale.unpack1('f')
+    end
+
+    def rolloff_scale=(scale)
+      FMOD.invoke(:System_Set3DSettings, self, doppler_scale,
+        distance_factor, scale)
+    end
+
+    ##
     # Calculates geometry occlusion between a listener and a sound source.
     #
     # @param listener [Vector] The listener position.
@@ -532,8 +640,8 @@ module FMOD
     #   element being the direct occlusion value, and the second element being
     #   the reverb occlusion value.
     def geometry_occlusion(listener, source)
-      FMOD.check_type(listener, Vector)
-      FMOD.check_type(source, Vector)
+      FMOD.is_type?(listener, Vector)
+      FMOD.is_type?(source, Vector)
       args = ["\0" * SIZEOF_FLOAT, "\0" * SIZEOF_FLOAT]
       FMOD.invoke(:System_GetGeometryOcclusion, self, listener, source, *args)
       args.join.unpack('ff')
@@ -606,10 +714,7 @@ module FMOD
     # Retrieves the number of available plugins loaded into FMOD at the current
     # time.
     #
-    # @param type [Symbol] Determines the type of plugin to factor into the
-    #   count.
-    # @option type [Symbol] (:all) The following values are valid:
-    #   * <b>:all</b> All plugin types.
+    # @param type [Symbol] Specifies the type of plugin(s) to enumerate.
     #   * <b>:output</b> The plugin type is an output module. FMOD mixed audio
     #     will play through one of these devices
     #   * <b>:codec</b> The plugin type is a file format codec. FMOD will use
@@ -618,13 +723,8 @@ module FMOD
     #     as part of its DSP network to apply effects to output or generate
     #     sound in realtime.
     # @return [Integer] the plugin count.
-    def plugin_count(type: :all)
-      plugin_type = case type
-      when :output then 0
-      when :codec then 1
-      when :dsp then 2
-      else nil
-      end
+    def plugin_count(type = :all)
+      plugin_type = [:output, :codec, :dsp].index(type)
       count = "\0" * SIZEOF_INT
       unless plugin_type.nil?
         FMOD.invoke(:System_GetNumPlugins, self, plugin_type, count)
@@ -720,11 +820,10 @@ module FMOD
     def plugin_info(handle)
       name, type, vs = "\0" * 512, "\0" * SIZEOF_INT, "\0" * SIZEOF_INT
       FMOD.invoke(:System_GetPluginInfo, self, handle, type, name, 512, vs)
-      type = [:output, :codec, :dsp][type]
+      type = [:output, :codec, :dsp][type.unpack1('l')]
       # noinspection RubyResolve
       name = name.delete("\0").force_encoding(Encoding::UTF_8)
-      vs = "%08X" % vs.unpack1('L')
-      Plugin.new(handle, type, name, "#{vs[0, 4].to_i}.#{vs[4, 4].to_i}")
+      Plugin.new(handle, type, name, FMOD.uint2version(vs))
     end
 
     ##
@@ -863,16 +962,11 @@ module FMOD
     end
 
     ##
-    # Returns the current version of FMOD being used.
-    #
-    # @return [String]
+    # @!attribute [r] version
+    # @return [String] the current version of FMOD being used.
     def version
       FMOD.invoke(:System_GetVersion, self, version = "\0" * SIZEOF_INT)
-      version = version.unpack1('L').to_s(16).rjust(8, '0')
-      major = version[0, 4].to_i
-      minor = version[4, 2].to_i
-      build = version[6, 2].to_i
-      "#{major}.#{minor}.#{build}"
+      FMOD.uint2version(version)
     end
 
     ##
@@ -918,10 +1012,9 @@ module FMOD
     #
     # @return [Channel] the newly playing channel.
     def play_sound(sound, group = nil, paused = false)
-      FMOD.check_type(sound, Sound)
+      FMOD.is_type?(sound, Sound)
       channel = int_ptr
-      paused = paused.to_i
-      FMOD.invoke(:System_PlaySound, self, sound, group, paused, channel)
+      FMOD.invoke(:System_PlaySound, self, sound, group, paused.to_i, channel)
       Channel.new(channel)
     end
 
@@ -932,7 +1025,7 @@ module FMOD
     end
 
     def []=(index, reverb)
-      FMOD.check_type(reverb, Reverb)
+      FMOD.is_type?(reverb, Reverb)
       FMOD.invoke(:System_SetReverbProperties, self, index, reverb)
     end
 
@@ -946,6 +1039,44 @@ module FMOD
 
     def mixer_resume
       FMOD.invoke(:System_MixerResume, self)
+    end
+
+    ##
+    # Route the signal from a channel group into a separate audio port on the
+    # output driver.
+    #
+    # Note that an FMOD port is a hardware specific reference, to hardware
+    # devices that exist on only certain platforms (like a console headset, or
+    # dedicated hardware music channel for example). It is not supported on all
+    # platforms.
+    #
+    # @param group [ChannelGroup] Channel group to route away to the new port.
+    # @param port_type [Integer] Output driver specific audio port type. See
+    #   extra platform specific header (if it exists) for port numbers
+    # @param port_index [Integer] Output driver specific index of the audio
+    #   port. Use {FMOD::PORT_INDEX_NONE} if this is not required.
+    # @param pass_thru [Boolean] If +true+ the signal will continue to be passed
+    #   through to the main mix, if +false+ the signal will be entirely to the
+    #   designated port.
+    #
+    # @return [void]
+    def attach_to_port(group, port_type, port_index, pass_thru)
+      FMOD.is_type?(group, ChannelGroup)
+      FMOD.invoke(:System_AttachChannelGroupToPort, self, port_type,
+        port_index, group, pass_thru.to_i)
+    end
+
+    ##
+    # Disconnect a channel group from a port and route audio back to the default
+    # port of the output driver.
+    #
+    # @param group [ChannelGroup] Channel group to route away back to the
+    #   default audio port.
+    #
+    # @return [void]
+    def detach_from_port(group)
+      FMOD.is_type?(group, ChannelGroup)
+      FMOD.invoke(:System_DetachChannelGroupFromPort, self, group)
     end
 
     ##
@@ -1037,6 +1168,67 @@ module FMOD
       Channel.new(handle)
     end
 
+    ##
+    # @return [Integer] the a speaker mode's channel count.
+    # @param speaker_mode [Integer] the speaker mode to query.
+    # @see SpeakerMode
+    def speaker_mode_channels(speaker_mode)
+      count = "\0" * SIZEOF_INT
+      FMOD.invoke(:System_GetSpeakerModeChannels, self, speaker_mode, count)
+      count.unpack1('l')
+    end
+
+    ##
+    # @!attribute software_format
+    # The output format for the software mixer.
+    #
+    # If loading Studio banks, this must be set with speaker mode
+    # corresponding to the project's output format if there is a possibility of
+    # the output audio device not matching the project's format. Any differences
+    # between the project format and the system's speaker mode will cause the
+    # mix to sound wrong.
+    #
+    # If not loading Studio banks, do not set this unless you explicitly want
+    # to change a setting from the default. FMOD will default to the speaker
+    # mode and sample rate that the OS / output prefers.
+    #
+    # @return [SoftwareFormat] the output format for the software mixer.
+
+    def software_format
+      args = ["\0" * SIZEOF_INT, "\0" * SIZEOF_INT, "\0" * SIZEOF_INT]
+      FMOD.invoke(:System_GetSoftwareFormat, self, *args)
+      args.map! { |arg| arg.unpack1('l') }
+      SoftwareFormat.new(*args)
+    end
+
+    def software_format=(format)
+      FMOD.is_type?(format, SoftwareFormat)
+      FMOD.invoke(:System_GetSoftwareFormat, self, *format.values)
+    end
+
+    def stream_buffer
+      size, type = "\0" * SIZEOF_INT, "\0" * SIZEOF_INT
+      FMOD.invoke(:System_GetStreamBufferSize, self, size, type)
+      StreamBuffer.new(size.unpack1('L'), type.unpack1('l'))
+    end
+
+    def stream_buffer=(buffer)
+      FMOD.is_type?(buffer, StreamBuffer)
+      raise RangeError, "size must be greater than 0" unless buffer.size > 0
+      FMOD.invoke(:System_SetStreamBufferSize, self, *buffer.values)
+    end
+
+    def dsp_buffer
+      size, count = "\0" * SIZEOF_INT, "\0" * SIZEOF_INT
+      FMOD.invoke(:System_GetDSPBufferSize, self, size, count)
+      DspBuffer.new(size.unpack1('L'), count.unpack1('l'))
+    end
+
+    def dsp_buffer=(buffer)
+      FMOD.is_type?(buffer, DspBuffer)
+      raise RangeError, "size must be greater than 0" unless buffer.size > 0
+      FMOD.invoke(:System_SetDSPBufferSize, self, *buffer.values)
+    end
   end
 end
 

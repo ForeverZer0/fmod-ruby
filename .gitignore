@@ -8,6 +8,7 @@
 /tmp/
 /.idea
 
+/**/*.mp3
 /**/*.dll
 /lib/test.rb
 

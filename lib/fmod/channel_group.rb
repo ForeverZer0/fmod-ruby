@@ -44,13 +44,13 @@ module FMOD
     end
 
     def add_channel(channel)
-      FMOD.check_type(channel, Channel)
+      FMOD.is_type?(channel, Channel)
       channel.group = self
       channel
     end
 
     def add_group(group, propagate_clock = true)
-      FMOD.check_type(group, ChannelGroup)
+      FMOD.is_type?(group, ChannelGroup)
       FMOD.invoke(:ChannelGroup_AddGroup, self, group,
         propagate_clock.to_i, connection = int_ptr)
       DspConnection.new(connection)

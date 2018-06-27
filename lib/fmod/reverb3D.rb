@@ -79,7 +79,7 @@ module FMOD
     end
 
     def position=(vector)
-      FMOD.check_type(vector, Vector)
+      FMOD.is_type?(vector, Vector)
       FMOD.invoke(:Reverb3D_Set3DAttributes, self, vector,
         min_distance, max_distance )
     end
@@ -90,7 +90,7 @@ module FMOD
     end
 
     def properties=(reverb)
-      FMOD.check_type(reverb, Reverb)
+      FMOD.is_type?(reverb, Reverb)
       FMOD.invoke(:Reverb3D_SetProperties, self, reverb)
       reverb
     end

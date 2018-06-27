@@ -190,7 +190,7 @@ module FMOD
     end
 
     def wet_dry_mix=(mix)
-      FMOD.check_type(mix, WetDryMix)
+      FMOD.is_type?(mix, WetDryMix)
       FMOD.invoke(:DSP_SetWetDryMix, self, *mix.values)
       mix
     end
@@ -239,7 +239,7 @@ module FMOD
     end
 
     def channel_format=(format)
-      FMOD.check_type(format, ChannelFormat)
+      FMOD.is_type?(format, ChannelFormat)
       FMOD.invoke(:DSP_GetChannelFormat, self, *format.values)
       format
     end
@@ -282,15 +282,15 @@ module FMOD
     end
 
     def disconnect_from(dsp, connection = nil)
-      FMOD.check_type(dsp, Dsp) unless dsp.nil?
-      FMOD.check_type(connection, DspConnection) unless connection.nil?
+      FMOD.is_type?(dsp, Dsp) unless dsp.nil?
+      FMOD.is_type?(connection, DspConnection) unless connection.nil?
       FMOD.invoke(:DSP_DisconnectFrom, self, dsp, connection)
     end
 
     def output_format(*args)
       if args.size == 3 && args.all? { |arg| arg.is_a?(Integer) }
         mask, count, mode = args
-      elsif args.size == 1 && FMOD.check_type(args[0], ChannelFormat)
+      elsif args.size == 1 && FMOD.is_type?(args[0], ChannelFormat)
         mask, count, mode = args[0].values
       else
         mask, count, mode = channel_format.values
@@ -326,7 +326,7 @@ module FMOD
     end
 
     def add_input(dsp, type)
-      FMOD.check_type(dsp, Dsp)
+      FMOD.is_type?(dsp, Dsp)
       connection = int_ptr
       FMOD.invoke(:DSP_AddInput, self, dsp, connection, type)
       DspConnection.new(connection)
@@ -419,8 +419,8 @@ module FMOD
 
     def set_data(index, value)
       return unless FMOD.check_range(index, 0, parameter_count, false)
-      unless FMOD.check_type(value, String, false)
-        FMOD.check_type(value, Pointer)
+      unless FMOD.is_type?(value, String, false)
+        FMOD.is_type?(value, Pointer)
       end
       size = value.is_a?(String) ? value.bytesize : value.size
       FMOD.invoke(:DSP_SetParameterData, self, index, value, size)

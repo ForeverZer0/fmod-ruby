@@ -114,6 +114,7 @@ module FMOD
       def value
         raw = self[:data].to_s(self[:data_length])
         raw.delete!("\0") unless self[:data_type] == TagDataType::BINARY
+        # noinspection RubyResolve
         case self[:data_type]
         when TagDataType::BINARY then raw
         when TagDataType::INT then raw.unpack1('l')
@@ -474,6 +475,8 @@ module FMOD
     end
   end
 end
+
+
 
 
 

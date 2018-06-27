@@ -236,7 +236,7 @@ module FMOD
     end
 
     def position3D=(vector)
-      FMOD.check_type(vector, Vector)
+      FMOD.is_type?(vector, Vector)
       FMOD.invoke(:ChannelGroup_Set3DAttributes, self, vector, nil, nil)
       vector
     end
@@ -248,7 +248,7 @@ module FMOD
     end
 
     def velocity3D=(vector)
-      FMOD.check_type(vector, Vector)
+      FMOD.is_type?(vector, Vector)
       FMOD.invoke(:ChannelGroup_Set3DAttributes, self, nil, vector, nil)
       vector
     end
@@ -262,7 +262,7 @@ module FMOD
     end
 
     def distance_filter=(filter)
-      FMOD.check_type(filter, DistanceFilter)
+      FMOD.is_type?(filter, DistanceFilter)
       args = filter.values
       args[0] = args[0].to_i
       FMOD.invoke(:ChannelGroup_Set3DDistanceFilter, self, *args)
@@ -291,7 +291,7 @@ module FMOD
     end
 
     def custom_rolloff=(rolloff)
-      FMOD.check_type(rolloff, Array)
+      FMOD.is_type?(rolloff, Array)
       vectors = rolloff.map { |vector| vector.to_str }.join
       FMOD.invoke(:ChannelGroup_Set3DCustomRolloff, self, vectors, rolloff.size)
       rolloff
@@ -542,7 +542,7 @@ module FMOD
     end
 
     def delay=(delay)
-      FMOD.check_type(delay, ChannelDelay)
+      FMOD.is_type?(delay, ChannelDelay)
       set_delay(delay.start, delay.end, delay.stop)
       delay
     end
@@ -560,7 +560,7 @@ module FMOD
     end
 
     def cone_orientation=(vector)
-      FMOD.check_type(vector, Vector)
+      FMOD.is_type?(vector, Vector)
       FMOD.invoke(:ChannelGroup_Set3DConeOrientation, self, vector)
       vector
     end
@@ -680,7 +680,7 @@ module FMOD
       # @param channel [ChannelControl] The channel or channel group to create
       #   the collection wrapper for.
       def initialize(channel)
-        FMOD.check_type(channel, ChannelControl)
+        FMOD.is_type?(channel, ChannelControl)
         @channel = channel
       end
 
@@ -727,7 +727,7 @@ module FMOD
       # @param dsp [Dsp] A DSP instance.
       # @return [Dsp] The given DSP instance.
       def []=(index, dsp)
-        FMOD.check_type(dsp, Dsp)
+        FMOD.is_type?(dsp, Dsp)
         FMOD.invoke(:ChannelGroup_AddDSP, @channel, index, dsp)
         dsp
       end
@@ -788,7 +788,7 @@ module FMOD
       # @param dsp [Dsp] The DSP to retrieve the index of.
       # @return [Integer] The index of the DSP.
       def index(dsp)
-        FMOD.check_type(dsp, Dsp)
+        FMOD.is_type?(dsp, Dsp)
         buffer = "\0" * Fiddle::SIZEOF_INT
         FMOD.invoke(:ChannelGroup_GetDSPIndex, @channel, dsp, buffer)
         buffer.unpack1('l')
@@ -801,7 +801,7 @@ module FMOD
       # @param index [Integer] The new index to place the specified DSP.
       # @return [self]
       def move(dsp, index)
-        FMOD.check_type(dsp, Dsp)
+        FMOD.is_type?(dsp, Dsp)
         FMOD.invoke(:ChannelGroup_SetDSPIndex, @channel, dsp, index)
         self
       end

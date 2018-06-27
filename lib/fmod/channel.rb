@@ -99,7 +99,7 @@ module FMOD
     end
 
     def group=(channel_group)
-      FMOD.check_type(channel_group, ChannelGroup)
+      FMOD.is_type?(channel_group, ChannelGroup)
       FMOD.invoke(:Channel_SetChannelGroup, self, channel_group)
     end
 

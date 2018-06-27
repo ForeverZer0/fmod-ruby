@@ -170,7 +170,7 @@ module FMOD
     end
 
     def group=(group)
-      FMOD.check_type(group, SoundGroup)
+      FMOD.is_type?(group, SoundGroup)
       FMOD.invoke(:Sound_SetSoundGroup, self, group)
     end
 
@@ -260,7 +260,7 @@ module FMOD
     # @param sync_point [Pointer] A sync point handle.
     # @return [void]
     def delete_syncpoint(sync_point)
-      FMOD.check_type(sync_point, Pointer)
+      FMOD.is_type?(sync_point, Pointer)
       FMOD.invoke(:Sound_DeleteSyncPoint, self, sync_point)
     end
 
@@ -433,7 +433,7 @@ module FMOD
     end
 
     def cone_settings=(settings)
-      FMOD.check_type(settings, ConeSettings)
+      FMOD.is_type?(settings, ConeSettings)
       set_cone(*settings.values)
       settings
     end
@@ -479,7 +479,7 @@ module FMOD
     end
 
     def custom_rolloff=(rolloff)
-      FMOD.check_type(rolloff, Array)
+      FMOD.is_type?(rolloff, Array)
       vectors = rolloff.map { |vector| vector.to_str }.join
       FMOD.invoke(:Sound_Set3DCustomRolloff, self, vectors, rolloff.size)
       rolloff
